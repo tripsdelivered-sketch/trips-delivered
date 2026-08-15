@@ -6,21 +6,21 @@
 
 <title>Trips Delivered | Your Holiday Plans Made Easier</title>
 
-<meta name="description" content="Personalised travel research and travel blueprints designed to save you hours of searching.">
+<meta name="description" content="Trips Delivered creates personalised travel blueprints designed to save you hours of holiday research.">
 
 <style>
 :root{
   --teal:#0F766E;
-  --dark:#115E59;
+  --teal-dark:#115E59;
   --mint:#CCFBF1;
-  --soft:#F0FDFA;
+  --mint-soft:#F0FDFA;
   --charcoal:#1F2937;
   --grey:#64748B;
   --light:#F8FAFC;
   --white:#FFFFFF;
   --red:#DC2626;
   --border:#DCE8E6;
-  --shadow:0 14px 38px rgba(15,118,110,.12);
+  --shadow:0 14px 36px rgba(15,118,110,.13);
 }
 
 *{
@@ -36,8 +36,8 @@ html{
 body{
   font-family:Arial,Helvetica,sans-serif;
   color:var(--charcoal);
-  background:#fff;
-  line-height:1.5;
+  background:var(--white);
+  line-height:1.45;
 }
 
 a{
@@ -46,11 +46,13 @@ a{
 }
 
 .container{
-  width:min(1120px,92%);
+  width:min(1180px,94%);
   margin:auto;
 }
 
-/* HEADER */
+/* =========================
+   HEADER / BRAND
+========================= */
 
 header{
   background:#fff;
@@ -60,51 +62,99 @@ header{
   z-index:100;
 }
 
-.nav{
-  min-height:92px;
+.header-inner{
+  min-height:96px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:20px;
+  gap:25px;
 }
-
-/* MASTER LOGO TREATMENT */
 
 .brand{
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  min-width:150px;
-  line-height:1;
+  min-width:180px;
 }
 
-.brand-icons{
+.brand-picture{
   display:flex;
   align-items:center;
-  justify-content:center;
   gap:7px;
+  height:39px;
   color:var(--teal);
-  font-weight:900;
-  font-size:1.15rem;
 }
 
-.brand-arrow{
-  font-size:.82rem;
-  color:var(--teal);
+.suitcase{
+  width:38px;
+  height:27px;
+  border:3px solid var(--teal);
+  border-radius:5px;
+  position:relative;
+}
+
+.suitcase:before{
+  content:"";
+  position:absolute;
+  width:15px;
+  height:7px;
+  border:3px solid var(--teal);
+  border-bottom:0;
+  border-radius:5px 5px 0 0;
+  left:8px;
+  top:-10px;
+}
+
+.suitcase:after{
+  content:"";
+  position:absolute;
+  left:7px;
+  right:7px;
+  top:10px;
+  border-top:2px solid var(--teal);
+}
+
+.logo-arrow{
+  font-size:14px;
+  font-weight:900;
+}
+
+.logo-plane{
+  font-size:24px;
+  transform:rotate(-3deg);
+}
+
+.envelope{
+  width:38px;
+  height:27px;
+  border:3px solid var(--teal);
+  border-radius:4px;
+  position:relative;
+}
+
+.envelope:before{
+  content:"";
+  position:absolute;
+  width:19px;
+  height:19px;
+  border-left:2px solid var(--teal);
+  border-bottom:2px solid var(--teal);
+  transform:rotate(-45deg);
+  left:6px;
+  top:-5px;
 }
 
 .brand-name{
-  margin-top:7px;
   color:var(--charcoal);
-  font-size:.78rem;
-  letter-spacing:.18em;
+  margin-top:7px;
+  font-size:.74rem;
   font-weight:900;
+  letter-spacing:.19em;
 }
 
 nav{
   display:flex;
-  align-items:center;
   gap:25px;
   font-size:.86rem;
   font-weight:800;
@@ -114,435 +164,489 @@ nav a:hover{
   color:var(--teal);
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
-  padding:36px 0 18px;
+  position:relative;
+  min-height:460px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.97) 0%,
+      rgba(255,255,255,.93) 38%,
+      rgba(255,255,255,.32) 70%,
+      rgba(255,255,255,.05) 100%
+    ),
+    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=88")
+    center/cover;
 }
 
-.hero-grid{
+.hero-inner{
+  width:100%;
+  padding:50px 0;
   display:grid;
-  grid-template-columns:.9fr 1.1fr;
-  gap:40px;
+  grid-template-columns:.88fr 1.12fr;
+  gap:30px;
   align-items:center;
 }
 
 .hero-copy h1{
-  font-size:clamp(2.7rem,5vw,4.6rem);
-  line-height:1.01;
+  font-size:clamp(2.7rem,5vw,4.8rem);
+  line-height:1;
   letter-spacing:-.055em;
-  margin-bottom:20px;
+  max-width:580px;
 }
 
 .hero-copy h1 span{
   color:var(--teal);
 }
 
-.hero-short{
-  max-width:470px;
+.hero-copy p{
+  max-width:480px;
   color:#475569;
+  margin-top:17px;
   font-size:1rem;
 }
 
-.hero-image{
-  min-height:400px;
-  border-radius:28px;
+.hero-overlay{
+  min-height:320px;
   position:relative;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  background:
-    linear-gradient(180deg,rgba(0,0,0,.01),rgba(0,0,0,.12)),
-    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1500&q=85")
-    center/cover;
 }
 
-/* CLOCK MESSAGE OVER SKY */
-
-.sky-message{
+.save-box{
   position:absolute;
-  top:24px;
-  left:24px;
+  top:25px;
+  left:9%;
   display:flex;
   align-items:center;
-  gap:11px;
+  gap:13px;
   background:rgba(255,255,255,.91);
-  border:1px solid rgba(255,255,255,.8);
-  padding:13px 16px;
-  border-radius:15px;
-  box-shadow:0 8px 22px rgba(0,0,0,.08);
+  border:1px solid rgba(255,255,255,.88);
+  border-radius:16px;
+  padding:15px 18px;
+  box-shadow:0 8px 24px rgba(0,0,0,.09);
   font-weight:900;
-  max-width:300px;
+  max-width:315px;
 }
 
 .clock{
-  width:38px;
-  height:38px;
-  flex:0 0 38px;
-  border:2px solid var(--teal);
+  width:42px;
+  height:42px;
+  flex:0 0 42px;
+  border:3px solid var(--teal);
   border-radius:50%;
-  display:grid;
-  place-items:center;
-  color:var(--teal);
-  font-size:1.2rem;
-}
-
-.image-bottom{
-  position:absolute;
-  bottom:20px;
-  left:20px;
-  background:rgba(255,255,255,.92);
-  padding:12px 15px;
-  border-radius:13px;
-  font-size:.9rem;
-  font-weight:800;
-}
-
-.image-bottom strong{
-  color:var(--teal);
-}
-
-/* HEART */
-
-.promise{
-  text-align:center;
-  padding:28px 0 14px;
-}
-
-.heart{
-  color:var(--teal);
-  font-size:2rem;
-  line-height:1;
-  margin-bottom:7px;
-}
-
-.promise h2{
-  color:var(--dark);
-  font-size:1.45rem;
-}
-
-.promise p{
-  color:var(--grey);
-  margin-top:4px;
-  font-size:.92rem;
-}
-
-/* PROCESS */
-
-.process{
-  padding:22px 0 45px;
-}
-
-.section-label{
-  color:var(--teal);
-  font-size:.76rem;
-  font-weight:900;
-  letter-spacing:.09em;
-  text-align:center;
-  margin-bottom:19px;
-}
-
-.process-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
-}
-
-.process-card{
-  text-align:center;
-  padding:15px 10px;
   position:relative;
 }
 
-.process-icon{
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  margin:0 auto 10px;
-  background:var(--soft);
-  border:1px solid var(--mint);
-  color:var(--teal);
+.clock:before{
+  content:"";
+  position:absolute;
+  width:2px;
+  height:11px;
+  background:var(--teal);
+  left:17px;
+  top:7px;
+  transform-origin:bottom;
+}
+
+.clock:after{
+  content:"";
+  position:absolute;
+  width:10px;
+  height:2px;
+  background:var(--teal);
+  left:18px;
+  top:17px;
+  transform:rotate(28deg);
+  transform-origin:left;
+}
+
+.love-box{
+  position:absolute;
+  left:9%;
+  bottom:30px;
+  background:rgba(255,255,255,.92);
+  border-radius:16px;
+  padding:14px 18px;
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+  color:var(--teal-dark);
+  font-weight:900;
+}
+
+.love-heart{
+  margin-right:7px;
   font-size:1.25rem;
 }
 
-.process-card h3{
-  font-size:.92rem;
-}
+/* =========================
+   PROCESS STRIP
+========================= */
 
-.process-card p{
-  color:var(--grey);
-  font-size:.79rem;
-  margin-top:4px;
-}
-
-/* FAST VISUAL STORY */
-
-.visual-story{
-  background:var(--soft);
-  padding:50px 0 60px;
-}
-
-.story-heading{
-  text-align:center;
-  max-width:700px;
-  margin:0 auto 28px;
-}
-
-.story-heading h2{
-  font-size:clamp(1.9rem,4vw,2.8rem);
-  letter-spacing:-.04em;
-  line-height:1.08;
-}
-
-.story-heading p{
-  color:var(--grey);
-  margin-top:8px;
-}
-
-/* auto-changing stage */
-
-.story-stage{
-  max-width:920px;
-  min-height:310px;
-  margin:auto;
+.process{
   background:#fff;
-  border:1px solid var(--border);
-  border-radius:25px;
-  box-shadow:var(--shadow);
-  position:relative;
-  overflow:hidden;
+  padding:26px 0 32px;
+  border-bottom:1px solid var(--border);
 }
 
-.story-slide{
-  position:absolute;
-  inset:0;
-  padding:35px;
-  display:grid;
-  grid-template-columns:.9fr 1.1fr;
-  gap:30px;
-  align-items:center;
-  opacity:0;
-  animation:storyCycle 5.6s infinite;
-}
-
-.story-slide:nth-child(1){animation-delay:0s;}
-.story-slide:nth-child(2){animation-delay:1.4s;}
-.story-slide:nth-child(3){animation-delay:2.8s;}
-.story-slide:nth-child(4){animation-delay:4.2s;}
-
-@keyframes storyCycle{
-  0%{opacity:0;transform:translateX(15px);}
-  5%{opacity:1;transform:translateX(0);}
-  22%{opacity:1;transform:translateX(0);}
-  27%{opacity:0;transform:translateX(-15px);}
-  100%{opacity:0;}
-}
-
-.story-copy .story-number{
+.process-title{
+  text-align:center;
   color:var(--teal);
-  font-size:.76rem;
+  font-size:.74rem;
+  letter-spacing:.12em;
+  font-weight:900;
+  margin-bottom:19px;
+}
+
+.process-row{
+  max-width:930px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  align-items:start;
+  position:relative;
+}
+
+.process-row:before{
+  content:"";
+  position:absolute;
+  left:12.5%;
+  right:12.5%;
+  top:21px;
+  height:2px;
+  background:var(--mint);
+  z-index:0;
+}
+
+.process-step{
+  position:relative;
+  z-index:1;
+  text-align:center;
+  padding:0 10px;
+}
+
+.process-circle{
+  width:44px;
+  height:44px;
+  margin:0 auto 8px;
+  border-radius:50%;
+  background:var(--teal);
+  color:white;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+}
+
+.process-step strong{
+  display:block;
+  font-size:.88rem;
+}
+
+.process-step span{
+  display:block;
+  color:var(--grey);
+  font-size:.73rem;
+  margin-top:2px;
+}
+
+/* =========================
+   FOUR VISUAL CARDS
+========================= */
+
+.visual{
+  background:var(--mint-soft);
+  padding:48px 0 58px;
+}
+
+.visual-heading{
+  text-align:center;
+  margin-bottom:27px;
+}
+
+.visual-heading .small{
+  color:var(--teal);
+  font-weight:900;
+  letter-spacing:.1em;
+  font-size:.74rem;
+}
+
+.visual-heading h2{
+  margin-top:6px;
+  font-size:clamp(1.8rem,3.4vw,2.7rem);
+  letter-spacing:-.04em;
+}
+
+.visual-heading p{
+  color:var(--grey);
+  margin-top:5px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.card{
+  background:white;
+  border:2px solid transparent;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:.25s ease;
+  animation:cardHighlight 8s infinite;
+}
+
+.card:nth-child(1){animation-delay:0s;}
+.card:nth-child(2){animation-delay:2s;}
+.card:nth-child(3){animation-delay:4s;}
+.card:nth-child(4){animation-delay:6s;}
+
+@keyframes cardHighlight{
+  0%,24%{
+    border-color:var(--teal);
+    transform:translateY(-5px);
+    box-shadow:0 18px 38px rgba(15,118,110,.20);
+  }
+  29%,100%{
+    border-color:transparent;
+    transform:translateY(0);
+    box-shadow:var(--shadow);
+  }
+}
+
+.card-image{
+  height:145px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+  background:#F8FAFC;
+  border-bottom:1px solid var(--border);
+}
+
+.card-body{
+  padding:17px;
+}
+
+.card-number{
+  color:var(--teal);
+  font-size:.69rem;
   font-weight:900;
   letter-spacing:.08em;
 }
 
-.story-copy h3{
-  font-size:1.8rem;
-  margin:8px 0;
-  line-height:1.1;
+.card h3{
+  margin:6px 0 5px;
+  font-size:1.02rem;
 }
 
-.story-copy p{
+.card p{
   color:var(--grey);
+  font-size:.79rem;
 }
 
-.story-visual{
-  min-height:220px;
-  border-radius:18px;
-  padding:22px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#F8FAFC;
-  border:1px solid var(--border);
-}
+/* CARD 1 VISUAL */
 
-/* slide 1 */
-
-.messy{
+.search-chaos{
   width:100%;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
+  gap:6px;
   transform:rotate(-1deg);
 }
 
-.messy-card{
+.search-note{
   background:white;
   border:1px solid #E2E8F0;
-  padding:14px;
-  border-radius:10px;
-  box-shadow:0 5px 12px rgba(0,0,0,.06);
-  font-size:.82rem;
+  border-radius:7px;
+  padding:8px;
+  font-size:.63rem;
+  box-shadow:0 3px 8px rgba(0,0,0,.06);
 }
 
-.tabs{
+.red{
   color:var(--red);
   font-weight:900;
 }
 
-/* slide 2 */
+/* CARD 2 VISUAL */
 
-.trip-form{
+.mini-form{
   width:100%;
   display:grid;
-  gap:9px;
+  gap:5px;
 }
 
-.form-line{
+.mini-input{
   background:white;
   border:1px solid var(--border);
-  border-radius:9px;
-  padding:11px 13px;
-  font-size:.82rem;
+  border-radius:6px;
+  padding:7px 8px;
+  font-size:.64rem;
 }
 
-.form-line strong{
+.mini-input strong{
   color:var(--teal);
 }
 
-/* slide 3 */
+/* CARD 3 VISUAL */
 
-.research-grid{
+.research{
   width:100%;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:9px;
+  gap:6px;
 }
 
-.research-chip{
-  padding:11px;
+.research-item{
   background:white;
   border:1px solid var(--mint);
-  border-radius:10px;
+  border-radius:7px;
+  padding:8px 4px;
   text-align:center;
-  font-size:.82rem;
+  font-size:.65rem;
   font-weight:800;
 }
 
-/* slide 4 */
+/* CARD 4 VISUAL */
 
 .phone{
-  width:170px;
-  height:220px;
-  border:6px solid #1F2937;
-  border-radius:24px;
+  width:105px;
+  height:132px;
+  border:4px solid var(--charcoal);
+  border-radius:15px;
   background:white;
-  padding:13px;
-  box-shadow:0 10px 25px rgba(0,0,0,.15);
+  padding:7px;
+  box-shadow:0 6px 15px rgba(0,0,0,.12);
 }
 
-.phone-top{
+.phone-logo{
   text-align:center;
   color:var(--teal);
-  font-size:.66rem;
+  font-size:.48rem;
   font-weight:900;
-  margin-bottom:12px;
+  letter-spacing:.04em;
 }
 
 .phone-title{
-  font-size:.9rem;
+  font-size:.59rem;
   font-weight:900;
-  margin-bottom:10px;
+  margin:7px 0 5px;
 }
 
-.phone-item{
-  background:var(--soft);
-  border-radius:7px;
-  padding:7px;
-  margin-top:6px;
-  font-size:.65rem;
+.phone-line{
+  background:var(--mint-soft);
+  border-radius:4px;
+  padding:4px;
+  margin-top:3px;
+  font-size:.46rem;
 }
 
-/* CLICK DOTS */
+/* PLAY INDICATOR */
 
-.story-dots{
+.playbar{
+  max-width:650px;
+  margin:23px auto 0;
+}
+
+.play-label{
   display:flex;
+  align-items:center;
   justify-content:center;
   gap:8px;
-  margin-top:18px;
-}
-
-.story-dot{
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:#B7DCD7;
-}
-
-.story-dot:first-child{
-  background:var(--teal);
-}
-
-/* PRICE REVEAL */
-
-.story-cta{
-  text-align:center;
-  margin-top:28px;
-}
-
-.story-cta h3{
-  font-size:1.25rem;
-  margin-bottom:5px;
-}
-
-.story-price{
-  color:var(--red);
-  font-size:1.6rem;
-  font-weight:900;
-}
-
-.story-note{
   color:var(--grey);
-  font-size:.8rem;
+  font-size:.73rem;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+.play-dot{
+  width:7px;
+  height:7px;
+  background:var(--teal);
+  border-radius:50%;
+}
+
+.track{
+  height:4px;
+  background:#D7EAE7;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.track-fill{
+  height:100%;
+  width:0;
+  background:var(--teal);
+  animation:progress 8s linear infinite;
+}
+
+@keyframes progress{
+  from{width:0;}
+  to{width:100%;}
+}
+
+/* CTA UNDER CARDS */
+
+.visual-cta{
+  text-align:center;
+  margin-top:27px;
 }
 
 .button{
   display:inline-block;
-  margin-top:15px;
   background:var(--teal);
-  color:#fff;
-  padding:14px 24px;
+  color:white;
   border-radius:11px;
+  padding:14px 25px;
   font-weight:900;
 }
 
 .button:hover{
-  background:var(--dark);
+  background:var(--teal-dark);
 }
 
-/* WHERE ARE YOU UP TO */
+.price{
+  color:var(--red);
+  font-size:1.65rem;
+  font-weight:900;
+  margin-top:9px;
+}
+
+.price-note{
+  color:var(--grey);
+  font-size:.78rem;
+}
+
+/* =========================
+   WHERE ARE YOU UP TO
+========================= */
 
 .options{
+  padding:64px 0;
   background:var(--light);
-  padding:65px 0;
 }
 
-.section-title{
+.section-heading{
   text-align:center;
-  max-width:700px;
+  max-width:720px;
   margin:0 auto 30px;
 }
 
-.section-title h2{
+.section-heading h2{
   font-size:clamp(2rem,4vw,3rem);
   letter-spacing:-.04em;
   line-height:1.08;
 }
 
-.section-title p{
+.section-heading p{
   color:var(--grey);
-  margin-top:8px;
+  margin-top:7px;
 }
 
 .option-grid{
@@ -551,11 +655,11 @@ nav a:hover{
   gap:18px;
 }
 
-.option-card{
-  background:#fff;
+.option{
+  background:white;
   border:1px solid var(--border);
   border-radius:18px;
-  padding:25px;
+  padding:24px;
   box-shadow:var(--shadow);
 }
 
@@ -564,19 +668,21 @@ nav a:hover{
   margin-bottom:10px;
 }
 
-.option-card h3{
+.option h3{
   margin-bottom:7px;
 }
 
-.option-card p{
+.option p{
   color:var(--grey);
   font-size:.9rem;
 }
 
-/* WHAT YOU RECEIVE */
+/* =========================
+   WHAT YOU RECEIVE
+========================= */
 
 .receive{
-  padding:70px 0;
+  padding:68px 0;
 }
 
 .receive-grid{
@@ -586,19 +692,23 @@ nav a:hover{
   align-items:center;
 }
 
-.receive-copy .section-label{
-  text-align:left;
+.receive-copy .label{
+  color:var(--teal);
+  font-size:.74rem;
+  letter-spacing:.1em;
+  font-weight:900;
 }
 
 .receive-copy h2{
+  margin-top:7px;
   font-size:clamp(2rem,4vw,3rem);
-  letter-spacing:-.04em;
   line-height:1.08;
-  margin-bottom:12px;
+  letter-spacing:-.04em;
 }
 
 .receive-copy p{
   color:var(--grey);
+  margin-top:10px;
 }
 
 .receive-list{
@@ -608,13 +718,13 @@ nav a:hover{
 }
 
 .receive-item{
-  display:flex;
-  gap:10px;
-  background:var(--soft);
+  background:var(--mint-soft);
   border:1px solid var(--mint);
-  border-radius:12px;
-  padding:14px;
-  font-size:.88rem;
+  border-radius:11px;
+  padding:13px;
+  display:flex;
+  gap:9px;
+  font-size:.86rem;
 }
 
 .tick{
@@ -622,147 +732,148 @@ nav a:hover{
   font-weight:900;
 }
 
-/* ACCOMMODATION COMING */
+/* =========================
+   ACCOMMODATION
+========================= */
 
 .accommodation{
   padding:0 0 65px;
 }
 
 .accommodation-box{
-  background:var(--soft);
+  background:var(--mint-soft);
   border:1px solid var(--mint);
-  border-radius:23px;
-  padding:32px;
+  border-radius:22px;
   text-align:center;
-}
-
-.accommodation-icon{
-  font-size:1.8rem;
-  margin-bottom:8px;
+  padding:31px;
 }
 
 .accommodation-box h2{
-  font-size:1.7rem;
+  font-size:1.65rem;
+  margin:7px 0;
 }
 
 .accommodation-box p{
-  color:var(--grey);
   max-width:650px;
-  margin:7px auto 0;
+  margin:auto;
+  color:var(--grey);
 }
 
-/* FINAL PURCHASE */
+/* =========================
+   FINAL CTA
+========================= */
 
-.final-purchase{
-  padding:10px 0 70px;
+.final{
+  padding:5px 0 70px;
 }
 
-.purchase-box{
+.final-box{
   max-width:720px;
   margin:auto;
   text-align:center;
   background:#0F172A;
   color:white;
   border-radius:27px;
-  padding:42px;
+  padding:40px;
 }
 
-.purchase-heart{
-  font-size:1.7rem;
+.final-heart{
   color:#5EEAD4;
+  font-size:1.7rem;
 }
 
-.purchase-box h2{
+.final-box h2{
+  margin:5px 0 8px;
   font-size:2rem;
-  margin:6px 0 9px;
 }
 
-.purchase-box p{
+.final-box p{
   color:#CBD5E1;
 }
 
 .final-price{
   color:#FF4D4D;
-  font-size:2.45rem;
+  font-size:2.4rem;
   font-weight:900;
-  margin-top:18px;
+  margin-top:17px;
 }
 
 .final-note{
-  font-size:.82rem;
-  margin-top:1px;
+  color:#CBD5E1;
+  font-size:.8rem;
 }
 
-/* PROVIDERS */
+/* =========================
+   PROVIDERS + FOOTER
+========================= */
 
 .providers{
-  padding:0 0 65px;
   text-align:center;
+  padding:0 0 60px;
 }
 
 .providers p{
-  color:var(--grey);
   max-width:700px;
-  margin:7px auto 0;
+  margin:6px auto 0;
+  color:var(--grey);
 }
-
-/* FOOTER */
 
 footer{
   background:#0F172A;
   color:#CBD5E1;
-  padding:42px 0;
+  padding:40px 0;
 }
 
 .footer-brand{
   display:inline-flex;
   flex-direction:column;
   align-items:center;
-  color:white;
-  margin-bottom:15px;
+  margin-bottom:13px;
 }
 
-.footer-icons{
+.footer-brand-icons{
   color:#5EEAD4;
   font-weight:900;
 }
 
-.footer-name{
-  margin-top:5px;
-  font-size:.7rem;
+.footer-brand-name{
+  color:white;
+  font-size:.66rem;
   letter-spacing:.15em;
   font-weight:900;
+  margin-top:5px;
 }
 
 .footer-small{
-  color:#94A3B8;
-  font-size:.78rem;
   max-width:850px;
-  margin-top:15px;
+  margin-top:14px;
+  color:#94A3B8;
+  font-size:.77rem;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
-@media(max-width:850px){
+@media(max-width:900px){
 
   nav{
     display:none;
   }
 
-  .hero-grid,
-  .receive-grid{
+  .hero-inner{
     grid-template-columns:1fr;
   }
 
-  .hero-image{
-    min-height:310px;
+  .hero{
+    min-height:auto;
   }
 
-  .process-grid{
-    grid-template-columns:1fr 1fr;
+  .hero-overlay{
+    min-height:300px;
   }
 
-  .story-slide{
+  .cards{
     grid-template-columns:1fr 1fr;
   }
 
@@ -770,7 +881,7 @@ footer{
     grid-template-columns:1fr;
   }
 
-  .receive-list{
+  .receive-grid{
     grid-template-columns:1fr;
   }
 }
@@ -781,100 +892,138 @@ footer{
     width:91%;
   }
 
-  .nav{
-    min-height:82px;
+  .header-inner{
+    justify-content:center;
+    min-height:90px;
   }
 
   .brand{
-    align-items:flex-start;
-  }
-
-  .brand-icons{
-    font-size:1rem;
-  }
-
-  .brand-name{
-    font-size:.65rem;
+    min-width:auto;
   }
 
   .hero{
-    padding-top:25px;
+    background:
+      linear-gradient(rgba(255,255,255,.80),rgba(255,255,255,.35)),
+      url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=85")
+      center/cover;
+  }
+
+  .hero-inner{
+    padding:35px 0 25px;
+    gap:10px;
   }
 
   .hero-copy h1{
     font-size:2.55rem;
   }
 
-  .hero-short{
-    font-size:.92rem;
+  .hero-copy p{
+    font-size:.9rem;
   }
 
-  .hero-image{
-    min-height:260px;
-    border-radius:20px;
+  .hero-overlay{
+    min-height:230px;
   }
 
-  .sky-message{
-    top:13px;
-    left:13px;
-    max-width:230px;
+  .save-box{
+    left:0;
+    top:12px;
+    max-width:245px;
     font-size:.78rem;
     padding:10px 12px;
   }
 
   .clock{
-    width:31px;
-    height:31px;
-    flex-basis:31px;
+    width:34px;
+    height:34px;
+    flex-basis:34px;
   }
 
-  .image-bottom{
-    left:13px;
-    right:13px;
-    bottom:13px;
-    font-size:.78rem;
+  .clock:before{
+    left:14px;
+    top:5px;
   }
 
-  .process-grid{
+  .clock:after{
+    left:15px;
+    top:15px;
+  }
+
+  .love-box{
+    left:0;
+    bottom:10px;
+    font-size:.8rem;
+    padding:10px 12px;
+  }
+
+  .process-row{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .process-row:before{
+    left:12%;
+    right:12%;
+  }
+
+  .process-step{
+    padding:0 3px;
+  }
+
+  .process-circle{
+    width:36px;
+    height:36px;
+    font-size:.8rem;
+  }
+
+  .process-step strong{
+    font-size:.68rem;
+  }
+
+  .process-step span{
+    display:none;
+  }
+
+  .cards{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .card-image{
+    height:115px;
+    padding:10px;
+  }
+
+  .card-body{
+    padding:12px;
+  }
+
+  .card h3{
+    font-size:.82rem;
+  }
+
+  .card p{
+    font-size:.68rem;
+  }
+
+  .card-number{
+    font-size:.58rem;
+  }
+
+  .search-note,
+  .mini-input,
+  .research-item{
+    font-size:.52rem;
+  }
+
+  .visual{
+    padding:38px 0 45px;
+  }
+
+  .receive-list{
     grid-template-columns:1fr;
   }
 
-  .process-card{
-    display:grid;
-    grid-template-columns:52px 1fr;
-    text-align:left;
-    column-gap:10px;
-    padding:10px 4px;
-  }
-
-  .process-icon{
-    grid-row:1/3;
-    margin:0;
-  }
-
-  .story-stage{
-    min-height:420px;
-  }
-
-  .story-slide{
-    padding:22px;
-    grid-template-columns:1fr;
-    gap:16px;
-  }
-
-  .story-copy h3{
-    font-size:1.45rem;
-  }
-
-  .story-visual{
-    min-height:190px;
-  }
-
-  .messy-card{
-    font-size:.7rem;
-  }
-
-  .purchase-box{
+  .final-box{
     padding:30px 20px;
   }
 
@@ -884,13 +1033,14 @@ footer{
 }
 
 @media(prefers-reduced-motion:reduce){
-  .story-slide{
+
+  .card,
+  .track-fill{
     animation:none;
-    opacity:0;
   }
 
-  .story-slide:first-child{
-    opacity:1;
+  .card:first-child{
+    border-color:var(--teal);
   }
 }
 </style>
@@ -899,21 +1049,26 @@ footer{
 <body>
 
 <header>
-<div class="container nav">
+<div class="container header-inner">
 
-  <a class="brand" href="#top">
-    <div class="brand-icons">
-      <span>▣</span>
-      <span class="brand-arrow">→</span>
-      <span>✈</span>
-      <span class="brand-arrow">→</span>
-      <span>✉</span>
+  <a href="#top" class="brand">
+
+    <div class="brand-picture">
+      <span class="suitcase"></span>
+      <span class="logo-arrow">→</span>
+      <span class="logo-plane">✈</span>
+      <span class="logo-arrow">→</span>
+      <span class="envelope"></span>
     </div>
-    <div class="brand-name">TRIPS DELIVERED</div>
+
+    <div class="brand-name">
+      TRIPS DELIVERED
+    </div>
+
   </a>
 
   <nav>
-    <a href="#process">How It Works</a>
+    <a href="#how">How It Works</a>
     <a href="#options">Your Trip</a>
     <a href="#receive">What You Get</a>
     <a href="#blueprint">Travel Blueprint</a>
@@ -927,7 +1082,7 @@ footer{
 
 <section class="hero">
 
-<div class="container hero-grid">
+<div class="container hero-inner">
 
   <div class="hero-copy">
 
@@ -936,27 +1091,34 @@ footer{
       <span>easier and quicker.</span>
     </h1>
 
-    <p class="hero-short">
-      Tell us about your holiday. We research and organise personalised
-      travel options around the trip you want.
+    <p>
+      Personalised travel research organised around
+      the holiday you want.
     </p>
 
   </div>
 
 
-  <div class="hero-image">
+  <div class="hero-overlay">
 
-    <div class="sky-message">
-      <div class="clock">◷</div>
+    <div class="save-box">
+
+      <div class="clock"></div>
+
       <div>
         Save hours of research<br>
         for about the cost of lunch.
       </div>
+
     </div>
 
-    <div class="image-bottom">
-      Less time searching.
-      <strong>More time enjoying your holiday.</strong>
+
+    <div class="love-box">
+
+      <span class="love-heart">♡</span>
+
+      You choose. We research. You book.
+
     </div>
 
   </div>
@@ -966,49 +1128,39 @@ footer{
 </section>
 
 
-<section class="promise">
-
-  <div class="heart">♡</div>
-
-  <h2>You choose. We research. You book.</h2>
-
-  <p>Your holiday. Your decisions. Our research.</p>
-
-</section>
-
-
-<section class="process" id="process">
+<section class="process" id="how">
 
 <div class="container">
 
-  <div class="section-label">
+  <div class="process-title">
     THE TRIPS DELIVERED PROCESS
   </div>
 
-  <div class="process-grid">
 
-    <div class="process-card">
-      <div class="process-icon">📝</div>
-      <h3>1. You choose</h3>
-      <p>Tell us about the holiday you want.</p>
+  <div class="process-row">
+
+    <div class="process-step">
+      <div class="process-circle">1</div>
+      <strong>You choose</strong>
+      <span>Tell us about your trip</span>
     </div>
 
-    <div class="process-card">
-      <div class="process-icon">⌕</div>
-      <h3>2. We research</h3>
-      <p>We narrow down useful options for you.</p>
+    <div class="process-step">
+      <div class="process-circle">2</div>
+      <strong>We research</strong>
+      <span>We organise the options</span>
     </div>
 
-    <div class="process-card">
-      <div class="process-icon">✉</div>
-      <h3>3. Delivered</h3>
-      <p>Your personalised blueprint arrives by email.</p>
+    <div class="process-step">
+      <div class="process-circle">3</div>
+      <strong>Delivered</strong>
+      <span>Sent to your email</span>
     </div>
 
-    <div class="process-card">
-      <div class="process-icon">✓</div>
-      <h3>4. You book</h3>
-      <p>You choose and book with travel providers.</p>
+    <div class="process-step">
+      <div class="process-circle">4</div>
+      <strong>You book</strong>
+      <span>Direct with providers</span>
     </div>
 
   </div>
@@ -1018,93 +1170,98 @@ footer{
 </section>
 
 
-<section class="visual-story">
+<section class="visual">
 
 <div class="container">
 
-  <div class="story-heading">
-    <div class="section-label">SEE IT IN SECONDS</div>
-    <h2>From hours of searching to holiday sorted.</h2>
-    <p>A quick look at how Trips Delivered saves you time.</p>
+  <div class="visual-heading">
+
+    <div class="small">
+      SEE HOW TRIPS DELIVERED WORKS
+    </div>
+
+    <h2>
+      From travel research to holiday ready.
+    </h2>
+
+    <p>
+      See the whole process at a glance.
+    </p>
+
   </div>
 
 
-  <div class="story-stage">
+  <div class="cards">
 
-    <!-- SLIDE 1 -->
+    <!-- CARD 1 -->
 
-    <div class="story-slide">
+    <article class="card">
 
-      <div class="story-copy">
-        <div class="story-number">01 · TOO MUCH SEARCHING</div>
-        <h3>Too many tabs. Too many choices.</h3>
-        <p>
-          Areas, tours, maps, transfers, reviews and things to do.
-          Holiday research adds up quickly.
-        </p>
-      </div>
+      <div class="card-image">
 
-      <div class="story-visual">
+        <div class="search-chaos">
 
-        <div class="messy">
-
-          <div class="messy-card">
-            <span class="tabs">14 tabs open</span><br>
-            Best things to do in Bali
+          <div class="search-note">
+            <span class="red">14 tabs open</span><br>
+            Best things to do
           </div>
 
-          <div class="messy-card">
-            Tour reviews<br>
-            Which one?
+          <div class="search-note">
+            Which area?
           </div>
 
-          <div class="messy-card">
-            Seminyak or Sanur?<br>
-            Uluwatu?
+          <div class="search-note">
+            Tour reviews
           </div>
 
-          <div class="messy-card">
-            Airport transfers<br>
-            Day trips<br>
-            Restaurants
+          <div class="search-note">
+            Transfers + maps
           </div>
 
         </div>
 
       </div>
 
-    </div>
+      <div class="card-body">
 
+        <div class="card-number">
+          1 · TOO MUCH SEARCHING?
+        </div>
 
-    <!-- SLIDE 2 -->
+        <h3>
+          Hours disappear quickly.
+        </h3>
 
-    <div class="story-slide">
-
-      <div class="story-copy">
-        <div class="story-number">02 · TELL US YOUR TRIP</div>
-        <h3>Tell us what matters to you.</h3>
         <p>
-          A few simple answers help us understand the holiday you're looking for.
+          Too many tabs, options and reviews.
         </p>
+
       </div>
 
-      <div class="story-visual">
+    </article>
 
-        <div class="trip-form">
 
-          <div class="form-line">
+    <!-- CARD 2 -->
+
+    <article class="card">
+
+      <div class="card-image">
+
+        <div class="mini-form">
+
+          <div class="mini-input">
             Destination <strong>Bali</strong>
           </div>
 
-          <div class="form-line">
+          <div class="mini-input">
             Travelling <strong>Couple</strong>
           </div>
 
-          <div class="form-line">
-            Interests <strong>Food · Beaches · Relaxation</strong>
+          <div class="mini-input">
+            Interests <strong>Food · Beaches</strong>
           </div>
 
-          <div class="form-line">
+          <div class="mini-input">
             Pace <strong>Relaxed</strong>
           </div>
 
@@ -1112,110 +1269,148 @@ footer{
 
       </div>
 
-    </div>
+      <div class="card-body">
 
+        <div class="card-number">
+          2 · TELL US YOUR TRIP
+        </div>
 
-    <!-- SLIDE 3 -->
+        <h3>
+          Tell us what matters.
+        </h3>
 
-    <div class="story-slide">
-
-      <div class="story-copy">
-        <div class="story-number">03 · WE DO THE RESEARCH</div>
-        <h3>We organise the useful options.</h3>
         <p>
-          Your destination research is narrowed down around your answers.
+          Destination, dates, style and interests.
         </p>
+
       </div>
 
-      <div class="story-visual">
+    </article>
 
-        <div class="research-grid">
 
-          <div class="research-chip">📍 Areas</div>
-          <div class="research-chip">🌴 Sightseeing</div>
-          <div class="research-chip">🎟 Tours</div>
-          <div class="research-chip">🍜 Food</div>
-          <div class="research-chip">🚗 Getting around</div>
-          <div class="research-chip">💡 Travel FYIs</div>
+    <!-- CARD 3 -->
+
+    <article class="card">
+
+      <div class="card-image">
+
+        <div class="research">
+
+          <div class="research-item">📍 Areas</div>
+          <div class="research-item">🌴 Things to do</div>
+          <div class="research-item">🎟 Tours</div>
+          <div class="research-item">🍜 Food</div>
+          <div class="research-item">🚗 Transport</div>
+          <div class="research-item">💡 Travel FYIs</div>
 
         </div>
 
       </div>
 
-    </div>
+      <div class="card-body">
 
+        <div class="card-number">
+          3 · WE DO THE RESEARCH
+        </div>
 
-    <!-- SLIDE 4 -->
+        <h3>
+          We narrow it down.
+        </h3>
 
-    <div class="story-slide">
-
-      <div class="story-copy">
-        <div class="story-number">04 · DELIVERED TO YOU</div>
-        <h3>Your Travel Blueprint arrives.</h3>
         <p>
-          Keep it on your phone and use it before departure or while you're away.
+          Useful options organised around you.
         </p>
+
       </div>
 
-      <div class="story-visual">
+    </article>
+
+
+    <!-- CARD 4 -->
+
+    <article class="card">
+
+      <div class="card-image">
 
         <div class="phone">
 
-          <div class="phone-top">
+          <div class="phone-logo">
             TRIPS DELIVERED
           </div>
 
           <div class="phone-title">
             🇮🇩 Bali<br>
-            Your Travel Blueprint
+            Travel Blueprint
           </div>
 
-          <div class="phone-item">
-            📍 Areas worth exploring
+          <div class="phone-line">
+            📍 Areas
           </div>
 
-          <div class="phone-item">
-            🎟 Tours & experiences
+          <div class="phone-line">
+            🎟 Experiences
           </div>
 
-          <div class="phone-item">
+          <div class="phone-line">
             🚗 Getting around
           </div>
 
-          <div class="phone-item">
-            💡 Useful travel tips
+          <div class="phone-line">
+            💡 Travel tips
           </div>
 
         </div>
 
       </div>
 
+      <div class="card-body">
+
+        <div class="card-number">
+          4 · YOUR BLUEPRINT ARRIVES
+        </div>
+
+        <h3>
+          Everything in one place.
+        </h3>
+
+        <p>
+          Use it before or during your holiday.
+        </p>
+
+      </div>
+
+    </article>
+
+  </div>
+
+
+  <div class="playbar">
+
+    <div class="play-label">
+      <span class="play-dot"></span>
+      AUTO PLAY · 1 → 2 → 3 → 4
+    </div>
+
+    <div class="track">
+      <div class="track-fill"></div>
     </div>
 
   </div>
 
 
-  <div class="story-dots">
-    <span class="story-dot"></span>
-    <span class="story-dot"></span>
-    <span class="story-dot"></span>
-    <span class="story-dot"></span>
-  </div>
-
-
-  <div class="story-cta">
-
-    <h3>Ready for your personalised Travel Blueprint?</h3>
-
-    <div class="story-price">AUD $14.99</div>
-
-    <div class="story-note">
-      One-off payment · No subscription
-    </div>
+  <div class="visual-cta">
 
     <a href="#blueprint" class="button">
       GET MY TRAVEL BLUEPRINT
     </a>
+
+    <div class="price">
+      AUD $14.99
+    </div>
+
+    <div class="price-note">
+      One-off payment · No subscription
+    </div>
 
   </div>
 
@@ -1228,9 +1423,11 @@ footer{
 
 <div class="container">
 
-  <div class="section-title">
+  <div class="section-heading">
 
-    <h2>Where are you up to?</h2>
+    <h2>
+      Where are you up to?
+    </h2>
 
     <p>
       Start with the stage of travel planning you're at now.
@@ -1241,46 +1438,52 @@ footer{
 
   <div class="option-grid">
 
-    <div class="option-card">
+    <article class="option">
 
       <div class="option-icon">🌏</div>
 
-      <h3>I want to travel to...</h3>
+      <h3>
+        I want to travel to...
+      </h3>
 
       <p>
         Explore a destination and discover areas and ideas
         that suit the holiday you're looking for.
       </p>
 
-    </div>
+    </article>
 
 
-    <div class="option-card">
+    <article class="option">
 
       <div class="option-icon">🧳</div>
 
-      <h3>I have booked my destination</h3>
+      <h3>
+        I have booked my destination
+      </h3>
 
       <p>
         Your destination is decided.
         Now make the most of your time there.
       </p>
 
-    </div>
+    </article>
 
 
-    <div class="option-card">
+    <article class="option">
 
       <div class="option-icon">🪧</div>
 
-      <h3>Show me destination options</h3>
+      <h3>
+        Show me destination options
+      </h3>
 
       <p>
         Comparing destinations?
         We'll research the options so you can decide.
       </p>
 
-    </div>
+    </article>
 
   </div>
 
@@ -1295,7 +1498,7 @@ footer{
 
   <div class="receive-copy">
 
-    <div class="section-label">
+    <div class="label">
       WHAT YOU WILL RECEIVE
     </div>
 
@@ -1366,9 +1569,11 @@ footer{
 
   <div class="accommodation-box">
 
-    <div class="accommodation-icon">🏨</div>
+    <div style="font-size:1.8rem;">🏨</div>
 
-    <h2>Accommodation options landing soon.</h2>
+    <h2>
+      Accommodation options landing soon.
+    </h2>
 
     <p>
       We're expanding Trips Delivered with accommodation options
@@ -1382,15 +1587,19 @@ footer{
 </section>
 
 
-<section class="final-purchase" id="blueprint">
+<section class="final" id="blueprint">
 
 <div class="container">
 
-  <div class="purchase-box">
+  <div class="final-box">
 
-    <div class="purchase-heart">♡</div>
+    <div class="final-heart">
+      ♡
+    </div>
 
-    <h2>You choose. We research. You book.</h2>
+    <h2>
+      You choose. We research. You book.
+    </h2>
 
     <p>
       Tell us about your holiday and let Trips Delivered
@@ -1440,11 +1649,11 @@ footer{
 
   <div class="footer-brand">
 
-    <div class="footer-icons">
-      ▣ → ✈ → ✉
+    <div class="footer-brand-icons">
+      SUITCASE → ✈ → ENVELOPE
     </div>
 
-    <div class="footer-name">
+    <div class="footer-brand-name">
       TRIPS DELIVERED
     </div>
 
@@ -1457,8 +1666,8 @@ footer{
   <div class="footer-small">
     Trips Delivered provides personalised travel research,
     planning information and recommendations.
-    Bookings are completed directly with independent
-    third-party travel providers.
+    Bookings are completed directly with independent third-party
+    travel providers.
   </div>
 
   <div class="footer-small">
