@@ -1,1164 +1,981 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Trips Delivered | Your Holiday Plans Made Easier</title>
-
-  <meta name="description" content="Personalised destination ideas, sightseeing, tours, experiences and useful travel tips. Trips Delivered saves you hours of searching so you can spend more time enjoying your holiday.">
-
-  <style>
-    :root {
-      --teal: #0F766E;
-      --dark-teal: #115E59;
-      --mint: #CCFBF1;
-      --soft-mint: #F0FDFA;
-      --charcoal: #1F2937;
-      --grey: #64748B;
-      --light: #F8FAFC;
-      --white: #FFFFFF;
-      --red: #DC2626;
-      --border: #DCE8E6;
-      --shadow: 0 16px 45px rgba(15,118,110,.12);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--charcoal);
-      background: var(--white);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1120px, 92%);
-      margin: auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255,255,255,.96);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
-
-    .nav {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 900;
-      font-size: 1.2rem;
-    }
-
-    .brand-mark {
-      background: var(--soft-mint);
-      color: var(--teal);
-      border: 1px solid var(--mint);
-      padding: 7px 10px;
-      border-radius: 999px;
-    }
-
-    nav {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      font-size: .92rem;
-      font-weight: 700;
-    }
-
-    nav a:hover {
-      color: var(--teal);
-    }
-
-    .hero {
-      min-height: 670px;
-      display: flex;
-      align-items: center;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,.98) 0%,
-          rgba(255,255,255,.95) 48%,
-          rgba(255,255,255,.60) 72%,
-          rgba(255,255,255,.15) 100%
-        ),
-        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=85")
-        center/cover;
-    }
-
-    .hero-content {
-      max-width: 680px;
-      padding: 75px 0;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      background: var(--mint);
-      color: var(--dark-teal);
-      border-radius: 999px;
-      padding: 7px 13px;
-      font-size: .78rem;
-      font-weight: 900;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      line-height: 1.02;
-      letter-spacing: -.055em;
-      margin-bottom: 22px;
-    }
-
-    h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.08;
-      letter-spacing: -.04em;
-      margin-bottom: 15px;
-    }
-
-    h3 {
-      line-height: 1.25;
-    }
-
-    .hero p {
-      max-width: 630px;
-      font-size: 1.15rem;
-      margin-bottom: 15px;
-      color: #334155;
-    }
-
-    .promise {
-      margin-top: 20px;
-      font-weight: 900;
-      color: var(--dark-teal);
-      font-size: 1.12rem;
-    }
-
-    .use-anytime {
-      margin-top: 8px;
-      font-weight: 700;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 13px;
-      flex-wrap: wrap;
-      margin-top: 28px;
-    }
-
-    .button {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      padding: 14px 21px;
-      border-radius: 12px;
-      font-weight: 900;
-      border: 2px solid transparent;
-      cursor: pointer;
-    }
-
-    .button-primary {
-      background: var(--teal);
-      color: white;
-    }
-
-    .button-primary:hover {
-      background: var(--dark-teal);
-    }
-
-    .button-outline {
-      background: white;
-      border-color: var(--teal);
-      color: var(--dark-teal);
-    }
-
-    .price-line {
-      margin-top: 18px;
-      font-weight: 900;
-    }
-
-    .price {
-      color: var(--red);
-      font-size: 1.45rem;
-    }
-
-    section {
-      padding: 80px 0;
-    }
-
-    .soft {
-      background: var(--light);
-    }
-
-    .mint {
-      background: var(--soft-mint);
-    }
-
-    .section-heading {
-      max-width: 760px;
-      margin-bottom: 38px;
-    }
-
-    .section-heading.center {
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .section-heading p {
-      color: var(--grey);
-      font-size: 1.06rem;
-    }
-
-    .steps,
-    .journeys,
-    .features,
-    .ideas {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 21px;
-    }
-
-    .card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .card p {
-      color: var(--grey);
-      margin-top: 9px;
-    }
-
-    .step-number {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--teal);
-      color: white;
-      font-weight: 900;
-      margin-bottom: 18px;
-    }
-
-    .journey-icon {
-      font-size: 2rem;
-      margin-bottom: 12px;
-    }
-
-    .preview {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 40px;
-      align-items: center;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 26px;
-      padding: 44px;
-      box-shadow: var(--shadow);
-    }
-
-    .preview-list {
-      list-style: none;
-      display: grid;
-      gap: 11px;
-      margin-top: 20px;
-    }
-
-    .preview-list li::before {
-      content: "✓";
-      color: var(--teal);
-      font-weight: 900;
-      margin-right: 9px;
-    }
-
-    .sample {
-      background: var(--soft-mint);
-      border: 1px solid var(--mint);
-      border-radius: 20px;
-      padding: 26px;
-    }
-
-    .sample h3 {
-      margin-bottom: 14px;
-    }
-
-    .sample-area {
-      background: white;
-      border-radius: 13px;
-      padding: 14px;
-      margin-top: 11px;
-      border: 1px solid var(--border);
-    }
-
-    .sample-area strong {
-      color: var(--dark-teal);
-    }
-
-    .blueprint {
-      background: #0F172A;
-      color: white;
-      border-radius: 28px;
-      padding: 48px;
-    }
-
-    .blueprint-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 45px;
-      align-items: center;
-    }
-
-    .blueprint p {
-      color: #CBD5E1;
-    }
-
-    .blueprint ul {
-      list-style: none;
-      margin-top: 22px;
-      display: grid;
-      gap: 12px;
-    }
-
-    .blueprint li::before {
-      content: "✓";
-      color: #5EEAD4;
-      font-weight: 900;
-      margin-right: 9px;
-    }
-
-    .purchase {
-      background: white;
-      color: var(--charcoal);
-      border-radius: 20px;
-      padding: 28px;
-      text-align: center;
-    }
-
-    .purchase .big-price {
-      color: var(--red);
-      font-size: 2.4rem;
-      font-weight: 900;
-      margin: 7px 0 0;
-    }
-
-    .purchase small {
-      color: var(--grey);
-    }
-
-    .purchase .button {
-      width: 100%;
-      margin-top: 18px;
-    }
-
-    .viator {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .viator-panel {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 30px;
-      box-shadow: var(--shadow);
-    }
-
-    .viator-panel ul {
-      list-style: none;
-      display: grid;
-      gap: 10px;
-      margin: 20px 0;
-    }
-
-    .viator-panel li::before {
-      content: "→";
-      color: var(--teal);
-      font-weight: 900;
-      margin-right: 8px;
-    }
-
-    .affiliate-note {
-      font-size: .82rem;
-      color: var(--grey);
-      margin-top: 14px;
-    }
-
-    .idea {
-      overflow: hidden;
-      padding: 0;
-    }
-
-    .idea-image {
-      height: 190px;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .idea-body {
-      padding: 23px;
-    }
-
-    .tag {
-      display: inline-block;
-      background: var(--mint);
-      color: var(--dark-teal);
-      padding: 5px 9px;
-      border-radius: 999px;
-      font-size: .75rem;
-      font-weight: 900;
-      margin-bottom: 11px;
-    }
-
-    .newsletter {
-      background: var(--dark-teal);
-      color: white;
-      border-radius: 28px;
-      padding: 46px;
-      display: grid;
-      grid-template-columns: 1fr .85fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .newsletter p {
-      color: #CCFBF1;
-    }
-
-    .newsletter-form {
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 18px;
-      padding: 22px;
-    }
-
-    .newsletter input {
-      width: 100%;
-      border: 0;
-      border-radius: 10px;
-      padding: 14px;
-      font-size: 1rem;
-      margin-bottom: 10px;
-    }
-
-    .newsletter button {
-      width: 100%;
-      border: 0;
-      border-radius: 10px;
-      padding: 14px;
-      background: white;
-      color: var(--dark-teal);
-      font-weight: 900;
-      cursor: pointer;
-    }
-
-    #newsletter-message {
-      min-height: 20px;
-      margin-top: 9px;
-      color: #CCFBF1;
-      font-size: .83rem;
-    }
-
-    footer {
-      background: #0F172A;
-      color: #CBD5E1;
-      padding: 46px 0;
-    }
-
-    .footer-title {
-      color: white;
-      font-weight: 900;
-      font-size: 1.2rem;
-      margin-bottom: 7px;
-    }
-
-    .footer-small {
-      margin-top: 20px;
-      color: #94A3B8;
-      font-size: .83rem;
-      max-width: 850px;
-    }
-
-    @media (max-width: 850px) {
-      nav {
-        display: none;
-      }
-
-      .hero {
-        min-height: auto;
-        background:
-          linear-gradient(rgba(255,255,255,.91),rgba(255,255,255,.97)),
-          url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80")
-          center/cover;
-      }
-
-      .hero-content {
-        padding: 65px 0;
-      }
-
-      .steps,
-      .journeys,
-      .features,
-      .ideas,
-      .preview,
-      .blueprint-grid,
-      .viator,
-      .newsletter {
-        grid-template-columns: 1fr;
-      }
-
-      section {
-        padding: 60px 0;
-      }
-
-      .preview,
-      .blueprint,
-      .newsletter {
-        padding: 28px;
-      }
-    }
-
-    @media (max-width: 520px) {
-      h1 {
-        font-size: 2.6rem;
-      }
-
-      .hero p {
-        font-size: 1.04rem;
-      }
-
-      .button {
-        width: 100%;
-      }
-
-      .brand {
-        font-size: 1rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trips Delivered | Your Holiday Plans Made Easier</title>
+
+<meta name="description" content="Personalised travel research and travel blueprints designed to save you hours of searching.">
+
+<style>
+:root{
+  --teal:#0F766E;
+  --dark-teal:#115E59;
+  --mint:#CCFBF1;
+  --soft-mint:#F0FDFA;
+  --charcoal:#1F2937;
+  --grey:#64748B;
+  --light:#F8FAFC;
+  --white:#FFFFFF;
+  --red:#DC2626;
+  --border:#DCE8E6;
+  --shadow:0 14px 36px rgba(15,118,110,.12);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--charcoal);
+  background:white;
+  line-height:1.5;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(1120px,92%);
+  margin:auto;
+}
+
+/* HEADER */
+
+header{
+  background:white;
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.nav{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+.logo-symbol{
+  color:var(--teal);
+  font-weight:900;
+  font-size:1.15rem;
+  letter-spacing:2px;
+}
+
+.logo-name{
+  font-weight:900;
+  font-size:1.1rem;
+  letter-spacing:.03em;
+}
+
+nav{
+  display:flex;
+  gap:24px;
+  align-items:center;
+  font-size:.88rem;
+  font-weight:800;
+}
+
+nav a:hover{
+  color:var(--teal);
+}
+
+/* HERO */
+
+.hero{
+  padding:45px 0 25px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:45px;
+  align-items:center;
+}
+
+.hero-copy h1{
+  font-size:clamp(2.6rem,5vw,4.5rem);
+  line-height:1.02;
+  letter-spacing:-.055em;
+  margin-bottom:20px;
+}
+
+.hero-copy h1 span{
+  color:var(--teal);
+}
+
+.save-message{
+  display:flex;
+  gap:13px;
+  align-items:flex-start;
+  margin:18px 0;
+  font-weight:800;
+  max-width:450px;
+}
+
+.clock{
+  width:36px;
+  height:36px;
+  border:2px solid var(--teal);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  flex:0 0 36px;
+  color:var(--teal);
+}
+
+.hero-short{
+  color:#475569;
+  max-width:500px;
+  font-size:1rem;
+}
+
+.hero-image{
+  min-height:390px;
+  border-radius:28px;
+  overflow:hidden;
+  position:relative;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.20)),
+    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=85")
+    center/cover;
+  box-shadow:var(--shadow);
+}
+
+.image-message{
+  position:absolute;
+  left:24px;
+  bottom:24px;
+  background:rgba(255,255,255,.94);
+  padding:15px 18px;
+  border-radius:15px;
+  max-width:290px;
+  font-weight:900;
+}
+
+.image-message span{
+  color:var(--teal);
+}
+
+/* LOVE HEART PROMISE */
+
+.promise{
+  text-align:center;
+  padding:32px 0 25px;
+}
+
+.heart{
+  font-size:1.7rem;
+  color:var(--teal);
+  margin-bottom:5px;
+}
+
+.promise h2{
+  font-size:1.45rem;
+  color:var(--dark-teal);
+}
+
+.promise p{
+  color:var(--grey);
+  margin-top:4px;
+}
+
+/* PROCESS */
+
+.process{
+  padding:30px 0 60px;
+}
+
+.section-label{
+  text-align:center;
+  color:var(--teal);
+  font-size:.78rem;
+  font-weight:900;
+  letter-spacing:.08em;
+  margin-bottom:20px;
+}
+
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.process-card{
+  text-align:center;
+  padding:20px 14px;
+}
+
+.process-icon{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  margin:0 auto 12px;
+  display:grid;
+  place-items:center;
+  background:var(--soft-mint);
+  border:1px solid var(--mint);
+  font-size:1.35rem;
+}
+
+.process-card h3{
+  font-size:.96rem;
+  margin-bottom:6px;
+}
+
+.process-card p{
+  color:var(--grey);
+  font-size:.82rem;
+}
+
+/* CHOICES */
+
+.choice-section{
+  background:var(--light);
+  padding:65px 0;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.section-title h2{
+  font-size:clamp(2rem,4vw,3rem);
+  line-height:1.1;
+  letter-spacing:-.04em;
+}
+
+.section-title p{
+  color:var(--grey);
+  margin-top:8px;
+}
+
+.choices{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.choice{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:24px;
+  box-shadow:var(--shadow);
+}
+
+.choice-icon{
+  font-size:1.8rem;
+  margin-bottom:10px;
+}
+
+.choice h3{
+  margin-bottom:8px;
+}
+
+.choice p{
+  color:var(--grey);
+  font-size:.92rem;
+}
+
+/* WHAT YOU RECEIVE */
+
+.receive{
+  padding:70px 0;
+}
+
+.receive-box{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:45px;
+  align-items:center;
+}
+
+.receive-intro h2{
+  font-size:clamp(2rem,4vw,3rem);
+  letter-spacing:-.04em;
+  line-height:1.08;
+  margin-bottom:13px;
+}
+
+.receive-intro p{
+  color:var(--grey);
+}
+
+.receive-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
+}
+
+.receive-item{
+  display:flex;
+  gap:11px;
+  align-items:flex-start;
+  background:var(--soft-mint);
+  border:1px solid var(--mint);
+  padding:15px;
+  border-radius:13px;
+  font-size:.9rem;
+}
+
+.tick{
+  color:var(--teal);
+  font-weight:900;
+}
+
+/* FLASH CARDS */
+
+.flash-section{
+  background:var(--soft-mint);
+  padding:65px 0;
+}
+
+.flashcards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:30px;
+}
+
+.flash{
+  min-height:210px;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:25px;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.flash-number{
+  color:var(--teal);
+  font-size:.78rem;
+  font-weight:900;
+}
+
+.flash h3{
+  font-size:1.25rem;
+  margin:12px 0 7px;
+}
+
+.flash p{
+  color:var(--grey);
+  font-size:.9rem;
+}
+
+.flash-arrow{
+  margin-top:20px;
+  color:var(--teal);
+  font-weight:900;
+}
+
+/* ACCOMMODATION */
+
+.coming{
+  padding:65px 0;
+}
+
+.coming-box{
+  border:1px solid var(--mint);
+  background:var(--soft-mint);
+  border-radius:24px;
+  padding:35px;
+  text-align:center;
+}
+
+.coming-icon{
+  font-size:2rem;
+  margin-bottom:10px;
+}
+
+.coming h2{
+  font-size:1.8rem;
+  margin-bottom:8px;
+}
+
+.coming p{
+  max-width:650px;
+  margin:auto;
+  color:var(--grey);
+}
+
+/* PURCHASE */
+
+.purchase-section{
+  padding:30px 0 75px;
+}
+
+.purchase{
+  max-width:720px;
+  margin:auto;
+  background:#0F172A;
+  color:white;
+  border-radius:28px;
+  padding:42px;
+  text-align:center;
+}
+
+.purchase h2{
+  font-size:2rem;
+  margin-bottom:8px;
+}
+
+.purchase p{
+  color:#CBD5E1;
+}
+
+.price{
+  color:#FF4D4D;
+  font-size:2.5rem;
+  font-weight:900;
+  margin:20px 0 0;
+}
+
+.price-note{
+  font-size:.85rem;
+  margin-top:2px;
+}
+
+.button{
+  display:inline-block;
+  background:var(--teal);
+  color:white;
+  padding:15px 25px;
+  border-radius:11px;
+  font-weight:900;
+  margin-top:22px;
+}
+
+.button:hover{
+  background:var(--dark-teal);
+}
+
+/* PARTNERS */
+
+.partners{
+  padding:0 0 70px;
+  text-align:center;
+}
+
+.partners p{
+  color:var(--grey);
+  max-width:700px;
+  margin:8px auto 0;
+}
+
+/* FOOTER */
+
+footer{
+  background:#0F172A;
+  color:#CBD5E1;
+  padding:40px 0;
+}
+
+.footer-logo{
+  color:white;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.footer-small{
+  font-size:.78rem;
+  color:#94A3B8;
+  max-width:850px;
+  margin-top:16px;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+  nav{
+    display:none;
+  }
+
+  .hero{
+    padding-top:28px;
+  }
+
+  .hero-grid,
+  .receive-box{
+    grid-template-columns:1fr;
+  }
+
+  .hero-image{
+    min-height:300px;
+  }
+
+  .process-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .choices,
+  .flashcards{
+    grid-template-columns:1fr;
+  }
+
+  .receive-list{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:520px){
+
+  .container{
+    width:91%;
+  }
+
+  .nav{
+    min-height:66px;
+  }
+
+  .logo-name{
+    font-size:.95rem;
+  }
+
+  .logo-symbol{
+    font-size:.95rem;
+  }
+
+  .hero-copy h1{
+    font-size:2.55rem;
+  }
+
+  .hero-grid{
+    gap:25px;
+  }
+
+  .hero-image{
+    min-height:245px;
+    border-radius:20px;
+  }
+
+  .image-message{
+    left:14px;
+    bottom:14px;
+    right:14px;
+    font-size:.85rem;
+  }
+
+  .process-grid{
+    grid-template-columns:1fr;
+    gap:4px;
+  }
+
+  .process-card{
+    display:grid;
+    grid-template-columns:55px 1fr;
+    text-align:left;
+    column-gap:10px;
+    padding:12px 5px;
+  }
+
+  .process-icon{
+    grid-row:1 / 3;
+    margin:0;
+  }
+
+  .process-card p{
+    margin-top:4px;
+  }
+
+  .purchase{
+    padding:30px 20px;
+  }
+
+  .button{
+    width:100%;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="container nav">
+<div class="container nav">
 
-    <a class="brand" href="#top">
-      <span class="brand-mark">🧳 → ✈️ → ✉️</span>
-      <span>Trips Delivered</span>
-    </a>
+  <a class="logo" href="#top">
+    <span class="logo-symbol">🧳 → ✈︎ → ✉</span>
+    <span class="logo-name">TRIPS DELIVERED</span>
+  </a>
 
-    <nav>
-      <a href="#how">How it works</a>
-      <a href="#preview">Free Preview</a>
-      <a href="#blueprint">Travel Blueprint</a>
-      <a href="#ideas">Travel Ideas</a>
-      <a href="#newsletter">Newsletter</a>
-    </nav>
+  <nav>
+    <a href="#process">How It Works</a>
+    <a href="#receive">What You Get</a>
+    <a href="#options">Your Trip</a>
+    <a href="#blueprint">Travel Blueprint</a>
+  </nav>
 
-  </div>
+</div>
 </header>
-
 
 <main id="top">
 
 <section class="hero">
-  <div class="container">
+<div class="container hero-grid">
 
-    <div class="hero-content">
+  <div class="hero-copy">
 
-      <span class="eyebrow">PERSONALISED TRAVEL RESEARCH</span>
+    <h1>
+      Your holiday plans made
+      <span>easier and quicker.</span>
+    </h1>
 
-      <h1>Your holiday plans made easier and quicker.</h1>
-
-      <p>
-        Whether you're deciding where to go, planning an upcoming holiday,
-        your trip is already booked or you've already arrived — Trips Delivered
-        helps you work out what to see, do and experience.
-      </p>
-
-      <p>
-        Tell us about your trip and what matters to you. We'll research suitable
-        destinations and areas, sightseeing, tours, experiences, day trips and
-        useful travel ideas — saving you hours of searching.
-      </p>
-
-      <p class="promise">
-        So you can spend more time looking forward to your well-deserved holiday
-        — or simply sit back, relax and enjoy it once you're there.
-      </p>
-
-      <p class="use-anytime">
-        Use Trips Delivered before departure or while you're travelling.
-      </p>
-
-      <div class="promise">
-        You choose. We research. You book.
-      </div>
-
-      <div class="hero-actions">
-        <a class="button button-primary" href="#blueprint">
-          GET MY TRAVEL BLUEPRINT
-        </a>
-
-        <a class="button button-outline" href="#preview">
-          TRY A FREE PREVIEW
-        </a>
-      </div>
-
-      <div class="price-line">
-        <span class="price">AUD $14.99</span>
-        &nbsp; · &nbsp; One-off payment · No subscription
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<section id="how">
-  <div class="container">
-
-    <div class="section-heading center">
-      <span class="eyebrow">HOW IT WORKS</span>
-      <h2>Three simple steps.</h2>
-      <p>
-        You tell us about the holiday you want. We do the time-consuming
-        research and organise useful personalised ideas in one easy blueprint.
-      </p>
-    </div>
-
-    <div class="steps">
-
-      <article class="card">
-        <div class="step-number">1</div>
-        <h3>Tell us about your trip</h3>
-        <p>
-          Destination ideas, dates, who is travelling, your travel pace,
-          interests and what matters most to you.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="step-number">2</div>
-        <h3>We do the research</h3>
-        <p>
-          We narrow down suitable destinations or areas and research things
-          to see and do based on the holiday you want.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="step-number">3</div>
-        <h3>Your blueprint is delivered</h3>
-        <p>
-          Receive your personalised travel blueprint by email with organised
-          ideas, useful information and booking links where available.
-        </p>
-      </article>
-
-    </div>
-
-  </div>
-</section>
-
-
-<section class="soft">
-  <div class="container">
-
-    <div class="section-heading">
-      <span class="eyebrow">WHERE ARE YOU UP TO?</span>
-      <h2>Start from where you are.</h2>
-      <p>
-        You don't need to have your whole holiday worked out before using Trips Delivered.
-      </p>
-    </div>
-
-    <div class="journeys">
-
-      <article class="card">
-        <div class="journey-icon">🌏</div>
-        <h3>I'm planning a trip</h3>
-        <p>
-          You know where you might like to go and want help understanding
-          the areas, experiences and things worth doing before you finalise your plans.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="journey-icon">✈️</div>
-        <h3>My trip is booked</h3>
-        <p>
-          Flights and accommodation are sorted. Now you want to make the most
-          of your time with sightseeing, tours, experiences and useful local ideas.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="journey-icon">🧭</div>
-        <h3>I'm exploring destination options</h3>
-        <p>
-          Comparing Bali with Fiji, Los Angeles with another destination,
-          or somewhere completely different? We'll help you explore the options.
-        </p>
-      </article>
-
-    </div>
-
-  </div>
-</section>
-
-
-<section id="preview">
-  <div class="container">
-
-    <div class="preview">
-
+    <div class="save-message">
+      <div class="clock">◷</div>
       <div>
-        <span class="eyebrow">TRY TRIPS DELIVERED</span>
-
-        <h2>Get a taste of your personalised research.</h2>
-
-        <p>
-          Not ready for the full blueprint yet? Try a short preview and see
-          how Trips Delivered can narrow down the options around your holiday.
-        </p>
-
-        <ul class="preview-list">
-          <li>Tell us the destination you're considering</li>
-          <li>Tell us who is travelling</li>
-          <li>Select the experiences that interest you</li>
-          <li>Tell us the pace and style of holiday you want</li>
-          <li>Receive a small personalised taste of our research</li>
-        </ul>
-
-        <div style="margin-top:22px;">
-          <span class="button button-primary">FREE PREVIEW — COMING NEXT</span>
-        </div>
+        Save hours of research<br>
+        for about the cost of lunch.
       </div>
-
-
-      <div class="sample">
-
-        <span class="tag">SAMPLE PREVIEW</span>
-
-        <h3>🇮🇩 Bali · Couple · Food · Beaches · Relaxation</h3>
-
-        <div class="sample-area">
-          <strong>Seminyak</strong><br>
-          Worth exploring if restaurants, beach access and having plenty
-          within easy reach are important to your holiday.
-        </div>
-
-        <div class="sample-area">
-          <strong>Sanur</strong><br>
-          A calmer option for travellers who want an easier beachfront feel
-          with restaurants and local experiences nearby.
-        </div>
-
-        <div class="sample-area">
-          <strong>Uluwatu</strong><br>
-          Worth considering for dramatic coastline, sunsets and a more
-          relaxed or romantic style of stay.
-        </div>
-
-        <p style="margin-top:15px; font-size:.88rem; color:#64748B;">
-          The free preview is deliberately limited. Your full personalised
-          blueprint provides deeper research and organised travel ideas.
-        </p>
-
-      </div>
-
     </div>
 
+    <p class="hero-short">
+      Tell us about your holiday. We research and organise personalised
+      travel options around the trip you want.
+    </p>
+
   </div>
+
+  <div class="hero-image">
+    <div class="image-message">
+      Less time searching.<br>
+      <span>More time enjoying your holiday.</span>
+    </div>
+  </div>
+
+</div>
 </section>
 
 
-<section id="blueprint">
-  <div class="container">
+<section class="promise">
 
-    <div class="blueprint">
+<div class="heart">♡</div>
 
-      <div class="blueprint-grid">
+<h2>You choose. We research. You book.</h2>
 
-        <div>
+<p>Your holiday. Your decisions. Our research.</p>
 
-          <span class="eyebrow">YOUR PERSONALISED TRAVEL BLUEPRINT</span>
-
-          <h2>More useful ideas. Less time searching.</h2>
-
-          <p>
-            Trips Delivered researches and organises travel ideas around
-            your destination, dates, travel style and interests.
-          </p>
-
-          <ul>
-            <li>Destination guidance when you're still deciding where to go</li>
-            <li>Suitable areas to explore within your destination</li>
-            <li>Personalised sightseeing ideas</li>
-            <li>Tours and experiences that match your interests</li>
-            <li>Day trips and memorable things to do</li>
-            <li>Food and local experience ideas</li>
-            <li>Getting-around and transport guidance</li>
-            <li>Useful practical travel tips</li>
-            <li>Trusted booking links where available</li>
-            <li>Mobile-friendly information for before and during your trip</li>
-          </ul>
-
-          <p style="margin-top:22px;">
-            You stay in control. Trips Delivered does the research and
-            organises the options. You decide what suits you and book directly
-            with the relevant travel provider.
-          </p>
-
-        </div>
-
-
-        <aside class="purchase">
-
-          <strong>PERSONALISED TRAVEL BLUEPRINT</strong>
-
-          <div class="big-price">AUD $14.99</div>
-
-          <small>One-off payment · No subscription</small>
-
-          <p style="margin-top:18px; color:#475569;">
-            Designed to save you hours of searching and give you useful
-            ideas you can return to throughout your holiday.
-          </p>
-
-          <span class="button button-primary">
-            GET MY TRAVEL BLUEPRINT
-          </span>
-
-        </aside>
-
-      </div>
-
-    </div>
-
-  </div>
 </section>
 
 
-<section class="mint">
-  <div class="container">
+<section class="process" id="process">
 
-    <div class="viator">
+<div class="container">
 
-      <div>
+  <div class="section-label">
+    THE TRIPS DELIVERED PROCESS
+  </div>
 
-        <span class="eyebrow">TOURS & EXPERIENCES</span>
+  <div class="process-grid">
 
-        <h2>Find things worth doing when you get there.</h2>
+    <div class="process-card">
+      <div class="process-icon">📝</div>
+      <h3>1. You choose</h3>
+      <p>Tell us about the holiday you want.</p>
+    </div>
 
-        <p>
-          Trips Delivered helps narrow down the kinds of experiences that
-          suit your holiday. When you're ready, you can explore current
-          tours, availability, prices and reviews with the travel provider.
-        </p>
+    <div class="process-card">
+      <div class="process-icon">⌕</div>
+      <h3>2. We research</h3>
+      <p>We narrow down useful options for you.</p>
+    </div>
 
-        <p style="margin-top:15px;">
-          Whether you're planning months ahead or looking for something to
-          do tomorrow, your blueprint can help point you in the right direction.
-        </p>
+    <div class="process-card">
+      <div class="process-icon">✉</div>
+      <h3>3. Delivered</h3>
+      <p>Your personalised blueprint arrives by email.</p>
+    </div>
 
-      </div>
-
-
-      <div class="viator-panel">
-
-        <span class="tag">BALI EXPERIENCE EXAMPLE</span>
-
-        <h3>Explore things to do in Bali</h3>
-
-        <ul>
-          <li>Food and local experiences</li>
-          <li>Day trips and sightseeing</li>
-          <li>Private and luxury experiences</li>
-          <li>Outdoor activities</li>
-          <li>Culture and workshops</li>
-          <li>Tickets and attractions</li>
-        </ul>
-
-        <a
-          class="button button-primary"
-          href="https://www.viator.com/Bali/d98-ttd?pid=P00312946&amp;mcid=42383&amp;medium=link&amp;medium_version=selector&amp;campaign=trips-delivered-bali"
-          target="_blank"
-          rel="noopener sponsored">
-          EXPLORE BALI EXPERIENCES
-        </a>
-
-        <div class="affiliate-note">
-          Booking is completed directly with Viator. This is an affiliate
-          link and Trips Delivered may receive a commission from qualifying
-          bookings at no additional cost to you.
-        </div>
-
-      </div>
-
+    <div class="process-card">
+      <div class="process-icon">✓</div>
+      <h3>4. You book</h3>
+      <p>Explore your options and book with providers.</p>
     </div>
 
   </div>
+
+</div>
 </section>
 
 
-<section id="ideas">
-  <div class="container">
+<section class="choice-section" id="options">
 
-    <div class="section-heading">
-      <span class="eyebrow">TRAVEL IDEAS & FYI</span>
+<div class="container">
 
-      <h2>Ideas worth knowing before you go.</h2>
+  <div class="section-title">
+    <h2>Where are you up to?</h2>
+    <p>Start with the stage of travel planning you're at now.</p>
+  </div>
 
+  <div class="choices">
+
+    <div class="choice">
+      <div class="choice-icon">🌏</div>
+      <h3>I want to travel to...</h3>
       <p>
-        Destination inspiration, area guides, sightseeing ideas and useful
-        travel information to help make planning easier.
+        Explore a destination and discover areas and ideas that suit
+        the holiday you're looking for.
       </p>
     </div>
 
-
-    <div class="ideas">
-
-      <article class="card idea">
-
-        <div
-          class="idea-image"
-          style="background-image:url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&amp;fit=crop&amp;w=900&amp;q=80');">
-        </div>
-
-        <div class="idea-body">
-          <span class="tag">BALI</span>
-          <h3>Which Bali area suits your holiday?</h3>
-          <p>
-            Seminyak, Sanur, Ubud, Uluwatu, Kuta and beyond can offer very
-            different experiences. Start with the holiday you want.
-          </p>
-        </div>
-
-      </article>
-
-
-      <article class="card idea">
-
-        <div
-          class="idea-image"
-          style="background-image:url('https://images.unsplash.com/photo-1590523278191-995cbcda646b?auto=format&amp;fit=crop&amp;w=900&amp;q=80');">
-        </div>
-
-        <div class="idea-body">
-          <span class="tag">FIJI</span>
-          <h3>Mainland or island?</h3>
-          <p>
-            Your Fiji experience can change considerably depending on where
-            you base yourself and the things you want to do.
-          </p>
-        </div>
-
-      </article>
-
-
-      <article class="card idea">
-
-        <div
-          class="idea-image"
-          style="background-image:url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&amp;fit=crop&amp;w=900&amp;q=80');">
-        </div>
-
-        <div class="idea-body">
-          <span class="tag">TRAVEL FYI</span>
-          <h3>Don't leave all the planning until you arrive.</h3>
-          <p>
-            A little personalised research before departure can help you
-            spend less holiday time searching and more time enjoying where you are.
-          </p>
-        </div>
-
-      </article>
-
-    </div>
-
-  </div>
-</section>
-
-
-<section id="newsletter" class="soft">
-  <div class="container">
-
-    <div class="newsletter">
-
-      <div>
-
-        <span class="eyebrow">TRIPS DELIVERED NEWSLETTER</span>
-
-        <h2>Travel ideas delivered.</h2>
-
-        <p>
-          Destination inspiration, sightseeing ideas, travel FYIs and useful
-          planning tips — without filling your inbox every day.
-        </p>
-
-      </div>
-
-
-      <div class="newsletter-form">
-
-        <input
-          id="newsletter-email"
-          type="email"
-          placeholder="Your email address"
-          aria-label="Your email address">
-
-        <button type="button" onclick="newsletterComingSoon()">
-          KEEP ME IN THE LOOP
-        </button>
-
-        <div id="newsletter-message"></div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<section>
-  <div class="container">
-
-    <div class="section-heading center">
-
-      <span class="eyebrow">TRAVEL PLANNING THAT FITS AROUND YOU</span>
-
-      <h2>Use it before you leave. Use it while you're away.</h2>
-
+    <div class="choice">
+      <div class="choice-icon">🧳</div>
+      <h3>I have booked my destination</h3>
       <p>
-        Trips Delivered is designed to remain useful throughout your trip.
-        Save your blueprint on your phone and return to your ideas whenever
-        you need them.
+        Your destination is decided. Now make the most of your time there.
       </p>
-
     </div>
 
-
-    <div class="features">
-
-      <article class="card">
-        <h3>🌏 Still deciding?</h3>
-        <p>
-          Explore destinations and suitable areas before you commit to the
-          holiday that feels right for you.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>✈️ Already booked?</h3>
-        <p>
-          Let us help organise sightseeing, tours, experiences and useful
-          ideas around the trip you've already planned.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>🌴 Already there?</h3>
-        <p>
-          Open your blueprint while travelling when you want ideas for what
-          to do next without spending your holiday searching.
-        </p>
-      </article>
-
+    <div class="choice">
+      <div class="choice-icon">🪧</div>
+      <h3>Show me destination options</h3>
+      <p>
+        Comparing destinations? We'll research the options so you can decide.
+      </p>
     </div>
 
   </div>
+
+</div>
+</section>
+
+
+<section class="receive" id="receive">
+
+<div class="container receive-box">
+
+  <div class="receive-intro">
+    <div class="section-label" style="text-align:left;">
+      WHAT YOU WILL RECEIVE
+    </div>
+
+    <h2>Your personalised Travel Blueprint.</h2>
+
+    <p>
+      Useful travel research organised around your answers and delivered
+      directly to your email.
+    </p>
+  </div>
+
+  <div class="receive-list">
+
+    <div class="receive-item">
+      <span class="tick">✓</span>
+      Destination and area guidance
+    </div>
+
+    <div class="receive-item">
+      <span class="tick">✓</span>
+      Tours, sightseeing & experiences
+    </div>
+
+    <div class="receive-item">
+      <span class="tick">✓</span>
+      Maps & useful location links
+    </div>
+
+    <div class="receive-item">
+      <span class="tick">✓</span>
+      Airport transfer ideas
+    </div>
+
+    <div class="receive-item">
+      <span class="tick">✓</span>
+      Car hire & transport information
+    </div>
+
+    <div class="receive-item">
+      <span class="tick">✓</span>
+      Food & local experience ideas
+    </div>
+
+    <div class="receive-item">
+      <span class="tick">✓</span>
+      Travel essentials & useful FYIs
+    </div>
+
+    <div class="receive-item">
+      <span class="tick">✓</span>
+      Trusted provider booking links
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+
+<section class="flash-section">
+
+<div class="container">
+
+  <div class="section-title">
+    <h2>From searching to sorted.</h2>
+    <p>A quick look at what Trips Delivered does for you.</p>
+  </div>
+
+  <div class="flashcards">
+
+    <div class="flash">
+      <div>
+        <div class="flash-number">01 · TOO MANY TABS</div>
+        <h3>Hours of searching?</h3>
+        <p>
+          Hotels, areas, tours, transfers, reviews, maps and travel ideas.
+        </p>
+      </div>
+      <div class="flash-arrow">→</div>
+    </div>
+
+    <div class="flash">
+      <div>
+        <div class="flash-number">02 · TELL US</div>
+        <h3>Tell us what matters.</h3>
+        <p>
+          Your destination, dates, travel style, interests and priorities.
+        </p>
+      </div>
+      <div class="flash-arrow">→</div>
+    </div>
+
+    <div class="flash">
+      <div>
+        <div class="flash-number">03 · DELIVERED</div>
+        <h3>Your research. One place.</h3>
+        <p>
+          A personalised Travel Blueprint ready to use before and during your holiday.
+        </p>
+      </div>
+      <div class="flash-arrow">✓</div>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+
+<section class="coming">
+
+<div class="container">
+
+  <div class="coming-box">
+
+    <div class="coming-icon">🏨</div>
+
+    <h2>Accommodation options landing soon.</h2>
+
+    <p>
+      We're expanding Trips Delivered with accommodation options and
+      trusted booking links to make planning your holiday even easier.
+    </p>
+
+  </div>
+
+</div>
+</section>
+
+
+<section class="purchase-section" id="blueprint">
+
+<div class="container">
+
+  <div class="purchase">
+
+    <h2>Ready for your Travel Blueprint?</h2>
+
+    <p>
+      Save the searching. Tell us about your holiday and let Trips Delivered
+      organise the research for you.
+    </p>
+
+    <div class="price">AUD $14.99</div>
+
+    <p class="price-note">
+      One-off payment · No subscription
+    </p>
+
+    <a class="button" href="#">
+      GET MY TRAVEL BLUEPRINT
+    </a>
+
+  </div>
+
+</div>
+</section>
+
+
+<section class="partners">
+
+<div class="container">
+
+  <strong>Book directly with travel providers.</strong>
+
+  <p>
+    Where booking links are provided, you can view current prices,
+    availability and booking details directly with the relevant provider.
+  </p>
+
+</div>
 </section>
 
 
 <footer>
-  <div class="container">
 
-    <div class="footer-title">
-      🧳 → ✈️ → ✉️ Trips Delivered
-    </div>
+<div class="container">
 
-    <div>
-      Your holiday plans made easier and quicker.
-    </div>
-
-    <div class="footer-small">
-      Trips Delivered provides personalised travel research, planning
-      information and recommendations. Where booking links are provided,
-      bookings are completed directly with independent third-party travel
-      providers. Availability, pricing, booking conditions, cancellations,
-      refunds and service delivery are determined by the relevant provider.
-    </div>
-
-    <div class="footer-small">
-      Some links on this website are affiliate or partner links. Trips Delivered
-      may receive a commission if you make a qualifying booking or purchase
-      through one of these links, at no additional cost to you.
-    </div>
-
-    <div class="footer-small">
-      Specific accommodation recommendations and accommodation booking links
-      will be introduced as additional travel-provider connections become available.
-    </div>
-
-    <div class="footer-small">
-      © 2026 Trips Delivered. All rights reserved.
-    </div>
-
+  <div class="footer-logo">
+    🧳 → ✈︎ → ✉ &nbsp; TRIPS DELIVERED
   </div>
+
+  <div>
+    Your holiday plans made easier and quicker.
+  </div>
+
+  <div class="footer-small">
+    Trips Delivered provides personalised travel research, planning
+    information and recommendations. Bookings are completed directly
+    with independent third-party travel providers.
+  </div>
+
+  <div class="footer-small">
+    Some links may be affiliate or partner links. Trips Delivered may
+    receive a commission from qualifying bookings at no additional cost to you.
+  </div>
+
+  <div class="footer-small">
+    © 2026 Trips Delivered. All rights reserved.
+  </div>
+
+</div>
+
 </footer>
 
 </main>
-
-
-<script>
-  function newsletterComingSoon() {
-    const email = document.getElementById("newsletter-email").value.trim();
-    const message = document.getElementById("newsletter-message");
-
-    if (!email || !email.includes("@")) {
-      message.textContent = "Please enter a valid email address.";
-      return;
-    }
-
-    message.textContent =
-      "Thanks! Our travel newsletter sign-up is being finalised. Your email address has not been stored yet.";
-  }
-</script>
 
 </body>
 </html>
