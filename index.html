@@ -1,1604 +1,1328 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Trips Delivered | Your Holiday Plans Made Easier</title>
-
-<meta
-  name="description"
-  content="Personalised travel research and travel blueprints designed to save you hours of holiday planning."
->
-
-<style>
-:root{
-  --teal:#0F766E;
-  --teal-dark:#115E59;
-  --mint:#CCFBF1;
-  --mint-soft:#F0FDFA;
-  --charcoal:#172033;
-  --text:#334155;
-  --grey:#64748B;
-  --white:#FFFFFF;
-  --light:#F8FAFC;
-  --red:#DC2626;
-  --border:#DCE8E6;
-  --shadow:0 14px 32px rgba(15,118,110,.12);
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  color:var(--charcoal);
-  background:white;
-  line-height:1.45;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-.container{
-  width:min(1180px,92%);
-  margin:auto;
-}
-
-/* HEADER */
-
-header{
-  background:#fff;
-  border-bottom:1px solid var(--border);
-  position:sticky;
-  top:0;
-  z-index:100;
-}
-
-.header-inner{
-  min-height:88px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:25px;
-}
-
-.brand{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  min-width:170px;
-}
-
-.brand-logo{
-  width:136px;
-  height:40px;
-  display:block;
-}
-
-.brand-name{
-  margin-top:4px;
-  font-size:.68rem;
-  font-weight:900;
-  letter-spacing:.18em;
-  color:var(--charcoal);
-}
-
-nav{
-  display:flex;
-  align-items:center;
-  gap:25px;
-  font-size:.82rem;
-  font-weight:800;
-}
-
-nav a:hover{
-  color:var(--teal);
-}
-
-.nav-cta{
-  padding:10px 16px;
-  border-radius:999px;
-  background:var(--teal);
-  color:white;
-}
-
-.nav-cta:hover{
-  background:var(--teal-dark);
-  color:white;
-}
-
-/* HERO */
-
-.hero{
-  padding:38px 0 28px;
-}
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:1fr 1.05fr;
-  gap:42px;
-  align-items:center;
-}
-
-.hero-copy h1{
-  font-size:clamp(2.7rem,5vw,4.6rem);
-  line-height:1.02;
-  letter-spacing:-.055em;
-}
-
-.hero-copy h1 span{
-  color:var(--teal);
-}
-
-.save-row{
-  display:flex;
-  align-items:flex-start;
-  gap:13px;
-  margin-top:22px;
-  max-width:470px;
-}
-
-.clock{
-  width:42px;
-  height:42px;
-  border:3px solid var(--teal);
-  border-radius:50%;
-  position:relative;
-  flex:0 0 42px;
-}
-
-.clock:before{
-  content:"";
-  position:absolute;
-  width:2px;
-  height:11px;
-  background:var(--teal);
-  left:18px;
-  top:8px;
-}
-
-.clock:after{
-  content:"";
-  position:absolute;
-  width:10px;
-  height:2px;
-  background:var(--teal);
-  left:19px;
-  top:18px;
-  transform:rotate(32deg);
-  transform-origin:left center;
-}
-
-.save-copy{
-  font-weight:900;
-  font-size:1rem;
-}
-
-.hero-copy p{
-  margin-top:14px;
-  max-width:510px;
-  color:var(--text);
-  font-size:.95rem;
-}
-
-.hero-actions{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-top:22px;
-  flex-wrap:wrap;
-}
-
-.button{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:13px 22px;
-  border-radius:9px;
-  background:var(--teal);
-  color:white;
-  font-size:.82rem;
-  font-weight:900;
-}
-
-.button:hover{
-  background:var(--teal-dark);
-}
-
-.price-box{
-  min-width:120px;
-  text-align:center;
-  border:1px solid var(--border);
-  border-radius:9px;
-  padding:11px 14px;
-  background:white;
-  color:var(--red);
-  font-size:1rem;
-  font-weight:900;
-}
-
-.payment-note{
-  width:100%;
-  color:var(--grey);
-  font-size:.67rem;
-  margin-top:-3px;
-}
-
-.hero-image{
-  min-height:360px;
-  border-radius:28px;
-  overflow:hidden;
-  background:
-    linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.12)),
-    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1500&q=86")
-    center/cover;
-  box-shadow:var(--shadow);
-}
-
-/* HOW IT WORKS */
-
-.how{
-  background:linear-gradient(180deg,#F7FCFB 0%,#F2F9F8 100%);
-  padding:26px 0 32px;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-}
-
-.section-small{
-  text-align:center;
-  color:var(--teal-dark);
-  font-size:.72rem;
-  font-weight:900;
-  letter-spacing:.08em;
-  margin-bottom:19px;
-}
-
-.steps{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-}
-
-.step{
-  text-align:center;
-  padding:8px 20px;
-}
-
-.step-icon-wrap{
-  width:58px;
-  height:58px;
-  margin:0 auto 10px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  border:2px solid var(--teal);
-  color:var(--teal);
-  font-size:1.55rem;
-  position:relative;
-}
-
-.step-number{
-  position:absolute;
-  top:-8px;
-  left:-8px;
-  width:24px;
-  height:24px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  background:var(--teal);
-  color:#fff;
-  font-size:.67rem;
-  font-weight:900;
-}
-
-.step h3{
-  font-size:.94rem;
-  margin-bottom:5px;
-}
-
-.step p{
-  color:var(--text);
-  font-size:.8rem;
-  max-width:270px;
-  margin:auto;
-}
-
-/* CUSTOMER PATHS */
-
-.paths{
-  padding:20px 0 30px;
-}
-
-.paths-title{
-  text-align:center;
-  font-size:.76rem;
-  font-weight:900;
-  letter-spacing:.05em;
-  margin-bottom:14px;
-}
-
-.path-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-
-.path-card{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-  min-height:82px;
-  border:1px solid #8BCFC7;
-  border-radius:12px;
-  padding:14px 17px;
-  background:#fff;
-}
-
-.path-left{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.path-icon{
-  font-size:1.75rem;
-}
-
-.path-card strong{
-  display:block;
-  color:var(--teal-dark);
-  font-size:.78rem;
-  line-height:1.2;
-}
-
-.path-arrow{
-  color:var(--teal);
-  font-size:1.4rem;
-  font-weight:900;
-}
-
-/* BLUEPRINT INCLUDES */
-
-.includes{
-  padding:10px 0 28px;
-}
-
-.includes-title{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom:18px;
-}
-
-.includes-title:before,
-.includes-title:after{
-  content:"";
-  flex:1;
-  height:1px;
-  background:#9AD5CE;
-}
-
-.includes-title span{
-  color:var(--teal-dark);
-  font-size:.74rem;
-  font-weight:900;
-  letter-spacing:.06em;
-}
-
-.includes-grid{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:12px;
-}
-
-.include{
-  text-align:center;
-}
-
-.include-icon{
-  color:var(--teal);
-  font-size:1.55rem;
-  min-height:34px;
-}
-
-.include strong{
-  display:block;
-  margin-top:4px;
-  font-size:.62rem;
-  line-height:1.2;
-}
-
-.promise{
-  margin-top:21px;
-  text-align:center;
-  color:var(--charcoal);
-  font-weight:800;
-}
-
-.promise span{
-  color:var(--teal);
-}
-
-/* FOUR VISUAL CARDS */
-
-.visual{
-  background:var(--mint-soft);
-  padding:46px 0 54px;
-}
-
-.visual-panel{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:22px;
-  box-shadow:var(--shadow);
-}
-
-.visual-heading{
-  text-align:center;
-  margin-bottom:18px;
-}
-
-.visual-heading span{
-  color:var(--teal);
-  font-size:.71rem;
-  font-weight:900;
-  letter-spacing:.08em;
-}
-
-.visual-heading h2{
-  margin-top:5px;
-  font-size:1.32rem;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:11px;
-}
-
-.card{
-  background:white;
-  border:2px solid transparent;
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:0 6px 18px rgba(15,23,42,.07);
-  transition:.25s ease;
-}
-
-.card.active{
-  border-color:var(--teal);
-  transform:translateY(-3px);
-  box-shadow:0 12px 26px rgba(15,118,110,.16);
-}
-
-.card-head{
-  display:flex;
-  align-items:flex-start;
-  gap:8px;
-  min-height:58px;
-  padding:10px 10px 6px;
-}
-
-.card-num{
-  width:25px;
-  height:25px;
-  border-radius:50%;
-  background:var(--teal);
-  color:#fff;
-  display:grid;
-  place-items:center;
-  flex:0 0 25px;
-  font-size:.7rem;
-  font-weight:900;
-}
-
-.card-head h3{
-  font-size:.77rem;
-  line-height:1.15;
-}
-
-.card-image{
-  height:145px;
-  margin:0 9px;
-  border-radius:8px;
-  overflow:hidden;
-  border:1px solid #E2E8F0;
-  background:#F8FAFC;
-  position:relative;
-}
-
-.card-caption{
-  padding:10px 11px 13px;
-  text-align:center;
-  color:var(--text);
-  font-size:.68rem;
-  min-height:65px;
-}
-
-/* VISUAL CARD 1 */
-
-.search-image{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(rgba(15,23,42,.08),rgba(15,23,42,.12)),
-    url("https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=700&q=82")
-    center/cover;
-}
-
-.search-tag{
-  position:absolute;
-  top:8px;
-  left:8px;
-  background:#fff;
-  border-radius:6px;
-  padding:5px 7px;
-  color:var(--red);
-  font-size:.55rem;
-  font-weight:900;
-}
-
-/* VISUAL CARD 2 */
-
-.form-demo{
-  position:absolute;
-  inset:0;
-  padding:10px;
-  display:grid;
-  gap:6px;
-}
-
-.form-row{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:6px;
-  padding:6px 7px;
-  font-size:.51rem;
-}
-
-.form-row strong{
-  float:right;
-  color:var(--teal);
-}
-
-.tags{
-  display:flex;
-  gap:4px;
-  flex-wrap:wrap;
-}
-
-.tags span{
-  padding:4px 6px;
-  border-radius:999px;
-  background:var(--mint);
-  color:var(--teal-dark);
-  font-size:.46rem;
-  font-weight:800;
-}
-
-/* VISUAL CARD 3 */
-
-.research-demo{
-  position:absolute;
-  inset:0;
-  display:grid;
-  grid-template-columns:.85fr 1.15fr;
-}
-
-.research-photo{
-  background:
-    linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.13)),
-    url("https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=500&q=80")
-    center/cover;
-}
-
-.research-list{
-  background:#fff;
-  padding:9px 7px;
-  display:grid;
-  align-content:center;
-  gap:4px;
-  font-size:.47rem;
-  font-weight:800;
-}
-
-/* VISUAL CARD 4 */
-
-.phone-demo{
-  position:absolute;
-  inset:8px 17px;
-  border:4px solid #1F2937;
-  border-radius:15px;
-  background:#fff;
-  padding:8px;
-}
-
-.phone-logo{
-  color:var(--teal);
-  font-size:.44rem;
-  font-weight:900;
-}
-
-.phone-title{
-  margin-top:7px;
-  font-size:.56rem;
-  font-weight:900;
-}
-
-.phone-cover{
-  margin-top:7px;
-  border-radius:5px;
-  padding:9px 5px;
-  background:
-    linear-gradient(rgba(15,118,110,.20),rgba(15,118,110,.32)),
-    url("https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&q=78")
-    center/cover;
-  color:#fff;
-  text-align:center;
-}
-
-.phone-cover strong{
-  display:block;
-  font-size:.85rem;
-}
-
-/* AUTOPLAY HIGHLIGHT */
-
-.auto{
-  margin-top:17px;
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  gap:12px;
-  align-items:center;
-}
-
-.auto button{
-  width:30px;
-  height:30px;
-  border:0;
-  border-radius:50%;
-  background:var(--teal);
-  color:#fff;
-  cursor:pointer;
-}
-
-.track{
-  height:4px;
-  background:#D7E5E3;
-  border-radius:999px;
-  overflow:hidden;
-}
-
-.track-fill{
-  height:100%;
-  width:0%;
-  background:var(--teal);
-}
-
-.auto-label{
-  font-size:.65rem;
-  color:var(--teal-dark);
-  font-weight:800;
-  white-space:nowrap;
-}
-
-.dots{
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  margin-top:7px;
-}
-
-.dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:#BFD5D2;
-}
-
-.dot.active{
-  background:var(--teal);
-}
-
-/* VISUAL CTA */
-
-.visual-cta{
-  margin-top:20px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:18px;
-  flex-wrap:wrap;
-}
-
-.visual-price{
-  color:var(--red);
-  font-size:1.35rem;
-  font-weight:900;
-}
-
-.visual-note{
-  width:100%;
-  text-align:center;
-  color:var(--grey);
-  font-size:.64rem;
-  margin-top:-8px;
-}
-
-/* TRUST */
-
-.trust{
-  margin-top:17px;
-  padding:13px 16px;
-  border-radius:12px;
-  background:#F7FBFA;
-  border:1px solid var(--border);
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-
-.trust-item{
-  display:flex;
-  align-items:flex-start;
-  gap:8px;
-}
-
-.trust-icon{
-  color:var(--teal);
-  font-size:1.25rem;
-}
-
-.trust-item strong{
-  display:block;
-  font-size:.66rem;
-}
-
-.trust-item small{
-  display:block;
-  color:var(--grey);
-  font-size:.57rem;
-  margin-top:2px;
-}
-
-/* WHAT YOU GET */
-
-.receive{
-  padding:62px 0;
-}
-
-.receive-grid{
-  display:grid;
-  grid-template-columns:.85fr 1.15fr;
-  gap:42px;
-  align-items:center;
-}
-
-.receive-label{
-  color:var(--teal);
-  font-size:.72rem;
-  font-weight:900;
-  letter-spacing:.08em;
-}
-
-.receive h2{
-  margin-top:6px;
-  font-size:clamp(2rem,4vw,2.9rem);
-  line-height:1.08;
-  letter-spacing:-.04em;
-}
-
-.receive p{
-  color:var(--grey);
-  margin-top:9px;
-}
-
-.receive-list{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:11px;
-}
-
-.receive-item{
-  padding:12px 13px;
-  border:1px solid var(--mint);
-  border-radius:10px;
-  background:var(--mint-soft);
-  font-size:.82rem;
-}
-
-.receive-item:before{
-  content:"✓";
-  color:var(--teal);
-  font-weight:900;
-  margin-right:8px;
-}
-
-/* HOTELS & ACCOMMODATION */
-
-.accommodation{
-  padding:0 0 55px;
-}
-
-.accommodation-box{
-  padding:31px 26px;
-  border-radius:19px;
-  border:1px solid var(--mint);
-  background:linear-gradient(180deg,#F0FDFA,#EAFBF8);
-  text-align:center;
-}
-
-.accommodation-label{
-  color:var(--teal);
-  font-size:.7rem;
-  font-weight:900;
-  letter-spacing:.09em;
-}
-
-.accommodation-icon{
-  margin-top:9px;
-  font-size:2rem;
-}
-
-.accommodation-box h2{
-  font-size:1.55rem;
-  margin:7px 0 8px;
-}
-
-.accommodation-box p{
-  max-width:690px;
-  margin:auto;
-  color:var(--grey);
-}
-
-.accommodation-soon{
-  display:inline-block;
-  margin-top:13px;
-  padding:7px 12px;
-  border-radius:999px;
-  background:#fff;
-  border:1px solid var(--mint);
-  color:var(--teal-dark);
-  font-size:.72rem;
-  font-weight:900;
-}
-
-/* FINAL CTA */
-
-.final{
-  padding:0 0 62px;
-}
-
-.final-box{
-  max-width:720px;
-  margin:auto;
-  padding:36px;
-  text-align:center;
-  border-radius:24px;
-  background:#0F172A;
-  color:#fff;
-}
-
-.final-heart{
-  color:#5EEAD4;
-  font-size:1.7rem;
-}
-
-.final-box h2{
-  margin:5px 0 7px;
-  font-size:1.9rem;
-}
-
-.final-box p{
-  color:#CBD5E1;
-}
-
-.final-price{
-  margin-top:15px;
-  color:#FF5151;
-  font-size:2.3rem;
-  font-weight:900;
-}
-
-.final-note{
-  color:#CBD5E1;
-  font-size:.74rem;
-}
-
-.final-box .button{
-  margin-top:16px;
-}
-
-/* PROVIDERS + FOOTER */
-
-.providers{
-  padding:0 0 50px;
-  text-align:center;
-}
-
-.providers p{
-  color:var(--grey);
-  max-width:700px;
-  margin:6px auto 0;
-  font-size:.86rem;
-}
-
-footer{
-  background:#0F172A;
-  color:#CBD5E1;
-  padding:38px 0;
-}
-
-.footer-brand{
-  display:inline-flex;
-  flex-direction:column;
-  align-items:center;
-}
-
-.footer-brand .brand-logo{
-  width:115px;
-  height:33px;
-}
-
-.footer-brand .brand-name{
-  color:#fff;
-  font-size:.6rem;
-}
-
-.footer-tag{
-  margin-top:13px;
-}
-
-.footer-small{
-  max-width:850px;
-  margin-top:13px;
-  color:#94A3B8;
-  font-size:.74rem;
-}
-
-/* TABLET */
-
-@media(max-width:900px){
-
-  nav{
-    display:none;
-  }
-
-  .hero-grid,
-  .receive-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero-image{
-    min-height:310px;
-  }
-
-  .cards{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .includes-grid{
-    grid-template-columns:repeat(4,1fr);
-  }
-}
-
-/* MOBILE */
-
-@media(max-width:600px){
-
-  .container{
-    width:92%;
-  }
-
-  .header-inner{
-    justify-content:center;
-    min-height:80px;
-  }
-
-  .brand-logo{
-    width:112px;
-    height:33px;
-  }
-
-  .hero{
-    padding-top:25px;
-  }
-
-  .hero-copy h1{
-    font-size:2.4rem;
-  }
-
-  .hero-copy p{
-    font-size:.86rem;
-  }
-
-  .hero-image{
-    min-height:240px;
-    border-radius:18px;
-  }
-
-  .hero-actions{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .button,
-  .price-box{
-    width:100%;
-  }
-
-  .payment-note{
-    text-align:center;
-  }
-
-  .steps{
-    grid-template-columns:1fr;
-    gap:9px;
-  }
-
-  .step{
-    display:grid;
-    grid-template-columns:55px 1fr;
-    text-align:left;
-    column-gap:10px;
-    padding:10px 5px;
-  }
-
-  .step-icon-wrap{
-    grid-row:1 / 3;
-    margin:0;
-  }
-
-  .step p{
-    margin:0;
-    max-width:none;
-  }
-
-  .path-grid{
-    grid-template-columns:repeat(3,1fr);
-    gap:7px;
-  }
-
-  .path-card{
-    min-height:110px;
-    padding:10px 6px;
-    flex-direction:column;
-    justify-content:center;
-    text-align:center;
-  }
-
-  .path-left{
-    flex-direction:column;
-    gap:6px;
-  }
-
-  .path-arrow{
-    display:none;
-  }
-
-  .path-card strong{
-    font-size:.58rem;
-  }
-
-  .includes-grid{
-    grid-template-columns:repeat(4,1fr);
-    gap:9px;
-  }
-
-  .include strong{
-    font-size:.52rem;
-  }
-
-  .cards{
-    grid-template-columns:repeat(4,78%);
-    overflow-x:auto;
-    scroll-snap-type:x mandatory;
-    gap:10px;
-    scrollbar-width:none;
-  }
-
-  .cards::-webkit-scrollbar{
-    display:none;
-  }
-
-  .card{
-    scroll-snap-align:center;
-  }
-
-  .card-image{
-    height:160px;
-  }
-
-  .auto{
-    grid-template-columns:auto 1fr;
-  }
-
-  .auto-label{
-    grid-column:1/-1;
-    text-align:center;
-  }
-
-  .trust{
-    grid-template-columns:1fr;
-  }
-
-  .receive-list{
-    grid-template-columns:1fr;
-  }
-
-  .final-box{
-    padding:28px 18px;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trips Delivered | Personalised Travel Research</title>
+
+  <style>
+    :root{
+      --teal:#0f7f78;
+      --teal-dark:#096b66;
+      --mint:#effbf9;
+      --mint-2:#e6f8f5;
+      --navy:#111b30;
+      --text:#172033;
+      --muted:#53627a;
+      --line:#b8e5df;
+      --red:#e52d32;
+      --white:#ffffff;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.45;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .wrap{
+      width:min(1120px, calc(100% - 40px));
+      margin:auto;
+    }
+
+    /* HEADER */
+    header{
+      background:#fff;
+      border-bottom:1px solid #e7eeee;
+      position:sticky;
+      top:0;
+      z-index:50;
+    }
+
+    .nav{
+      min-height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      flex-shrink:0;
+    }
+
+    .brand-icons{
+      display:flex;
+      align-items:center;
+      gap:7px;
+      color:var(--teal);
+      font-size:25px;
+      line-height:1;
+    }
+
+    .brand-route{
+      letter-spacing:2px;
+      font-size:17px;
+    }
+
+    .brand-name{
+      margin-top:7px;
+      font-weight:800;
+      letter-spacing:3px;
+      font-size:12px;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    nav a:hover{
+      color:var(--teal);
+    }
+
+    .nav-button,
+    .button{
+      background:var(--teal);
+      color:white;
+      border-radius:8px;
+      font-weight:800;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      transition:.2s ease;
+    }
+
+    .nav-button{
+      padding:12px 19px;
+      border-radius:24px;
+    }
+
+    .button{
+      min-height:48px;
+      padding:0 25px;
+    }
+
+    .nav-button:hover,
+    .button:hover{
+      background:var(--teal-dark);
+      transform:translateY(-1px);
+    }
+
+    /* HERO */
+    .hero{
+      padding:38px 0 30px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr 1.08fr;
+      align-items:center;
+      gap:55px;
+    }
+
+    h1{
+      font-size:52px;
+      line-height:1.06;
+      letter-spacing:-2px;
+      max-width:540px;
+      margin-bottom:22px;
+    }
+
+    .teal{
+      color:var(--teal);
+    }
+
+    .clock-row{
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      margin-bottom:12px;
+    }
+
+    .clock{
+      width:37px;
+      height:37px;
+      border:3px solid var(--teal);
+      border-radius:50%;
+      position:relative;
+      flex-shrink:0;
+      margin-top:2px;
+    }
+
+    .clock:before{
+      content:"";
+      position:absolute;
+      width:2px;
+      height:10px;
+      background:var(--teal);
+      left:16px;
+      top:6px;
+    }
+
+    .clock:after{
+      content:"";
+      position:absolute;
+      width:9px;
+      height:2px;
+      background:var(--teal);
+      left:16px;
+      top:16px;
+      transform:rotate(25deg);
+      transform-origin:left center;
+    }
+
+    .clock-copy{
+      font-weight:800;
+      font-size:17px;
+      line-height:1.3;
+    }
+
+    .hero-copy{
+      color:#28364c;
+      max-width:540px;
+      font-size:15px;
+      margin:8px 0 22px 51px;
+    }
+
+    .hero-actions{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-left:51px;
+      flex-wrap:wrap;
+    }
+
+    .price{
+      min-height:48px;
+      border:1px solid #d9e1e4;
+      border-radius:8px;
+      padding:0 20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      font-weight:900;
+      color:var(--red);
+      background:white;
+    }
+
+    .payment-note{
+      margin:8px 0 0 51px;
+      font-size:11px;
+      color:#637188;
+    }
+
+    .hero-photo{
+      min-height:350px;
+      border-radius:34px 34px 34px 34px;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.03)),
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=85")
+        center/cover no-repeat;
+      box-shadow:0 15px 35px rgba(20,60,70,.10);
+    }
+
+    /* HOW IT WORKS */
+    .how{
+      background:linear-gradient(180deg,#f5fcfb,#edf9f7);
+      border-top:1px solid #dfeeed;
+      border-bottom:1px solid #dfeeed;
+      padding:24px 0 30px;
+    }
+
+    .section-label{
+      color:var(--teal-dark);
+      text-transform:uppercase;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:1.4px;
+      text-align:center;
+      margin-bottom:20px;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:42px;
+      text-align:center;
+    }
+
+    .step{
+      position:relative;
+    }
+
+    .step-icon{
+      width:58px;
+      height:58px;
+      border:2px solid var(--teal);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto 12px;
+      font-size:26px;
+      background:white;
+      position:relative;
+    }
+
+    .number{
+      position:absolute;
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      background:var(--teal);
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:12px;
+      font-weight:900;
+      left:-8px;
+      top:-7px;
+    }
+
+    .step h3{
+      font-size:15px;
+      margin-bottom:7px;
+    }
+
+    .step p{
+      color:#42516a;
+      font-size:13px;
+      max-width:260px;
+      margin:auto;
+    }
+
+    /* CHOICES */
+    .choices{
+      padding:28px 0 12px;
+    }
+
+    .choices-title{
+      text-align:center;
+      font-size:12px;
+      font-weight:900;
+      margin-bottom:15px;
+    }
+
+    .choice-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .choice{
+      border:1.5px solid #75cbc2;
+      border-radius:11px;
+      min-height:80px;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      gap:15px;
+      color:var(--teal-dark);
+      font-weight:900;
+      font-size:13px;
+      background:#fff;
+    }
+
+    .choice:hover{
+      background:var(--mint);
+    }
+
+    .choice-icon{
+      font-size:29px;
+    }
+
+    .arrow{
+      margin-left:auto;
+      font-size:24px;
+    }
+
+    /* INCLUDES */
+    .includes{
+      padding:18px 0 30px;
+    }
+
+    .divider-title{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      color:var(--teal-dark);
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:20px;
+    }
+
+    .divider-title:before,
+    .divider-title:after{
+      content:"";
+      height:1px;
+      background:#80cfc6;
+      flex:1;
+    }
+
+    .include-grid{
+      display:grid;
+      grid-template-columns:repeat(7,1fr);
+      gap:15px;
+      text-align:center;
+    }
+
+    .include-icon{
+      font-size:27px;
+      margin-bottom:7px;
+    }
+
+    .include-item{
+      font-size:11px;
+      font-weight:700;
+    }
+
+    .promise{
+      text-align:center;
+      margin-top:25px;
+      font-weight:800;
+      font-size:16px;
+    }
+
+    /* PROCESS CARDS */
+    .process-section{
+      background:var(--mint);
+      padding:45px 0;
+    }
+
+    .process-box{
+      background:white;
+      border:1px solid #d5e9e6;
+      border-radius:22px;
+      padding:28px 25px 20px;
+      box-shadow:0 15px 35px rgba(25,70,70,.07);
+    }
+
+    .process-box h2{
+      text-align:center;
+      font-size:25px;
+      margin-bottom:24px;
+    }
+
+    .process-cards{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .process-card{
+      border:1px solid #e1e7e8;
+      border-radius:14px;
+      padding:12px;
+      background:#fff;
+      min-height:245px;
+      transition:.25s ease;
+    }
+
+    .process-card.active{
+      border:2px solid var(--teal);
+      transform:translateY(-3px);
+      box-shadow:0 8px 20px rgba(15,127,120,.10);
+    }
+
+    .card-head{
+      display:flex;
+      gap:8px;
+      align-items:flex-start;
+      min-height:43px;
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      line-height:1.1;
+    }
+
+    .card-num{
+      width:23px;
+      height:23px;
+      border-radius:50%;
+      background:var(--teal);
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+    }
+
+    .card-visual{
+      height:125px;
+      border-radius:9px;
+      margin:9px 0 11px;
+      overflow:hidden;
+      background:#f1f5f5;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
+
+    .search-photo{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .tabs{
+      position:absolute;
+      left:10px;
+      top:10px;
+      background:white;
+      border-radius:6px;
+      padding:5px 8px;
+      font-size:10px;
+      color:var(--red);
+      font-weight:900;
+    }
+
+    .mini-form{
+      width:90%;
+      display:grid;
+      gap:6px;
+    }
+
+    .mini-field{
+      background:white;
+      border:1px solid #d7e1e2;
+      border-radius:5px;
+      padding:6px;
+      font-size:9px;
+    }
+
+    .mini-field span{
+      float:right;
+      color:var(--teal);
+      font-weight:bold;
+    }
+
+    .research{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      width:92%;
+      height:90%;
+      background:white;
+      border-radius:7px;
+      overflow:hidden;
+      border:1px solid #dce5e6;
+    }
+
+    .research-photo{
+      background:url("https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=500&q=80") center/cover;
+    }
+
+    .research-list{
+      font-size:9px;
+      padding:10px 7px;
+      line-height:1.7;
+    }
+
+    .email-card{
+      width:90%;
+      height:90%;
+      border:3px solid #1b2639;
+      border-radius:10px;
+      background:white;
+      padding:9px;
+      font-size:9px;
+    }
+
+    .email-title{
+      color:var(--teal);
+      font-weight:900;
+      font-size:8px;
+      margin-bottom:8px;
+    }
+
+    .email-image{
+      height:70px;
+      margin-top:8px;
+      border-radius:5px;
+      background:
+        linear-gradient(rgba(8,70,60,.25),rgba(8,70,60,.25)),
+        url("https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=500&q=80")
+        center/cover;
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      font-weight:800;
+    }
+
+    .card-copy{
+      font-size:11px;
+      text-align:center;
+      color:#42516a;
+    }
+
+    .progress-row{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-top:19px;
+    }
+
+    .pause{
+      width:28px;
+      height:28px;
+      border-radius:50%;
+      background:var(--teal);
+      color:white;
+      border:0;
+      cursor:pointer;
+      font-weight:900;
+    }
+
+    .progress{
+      height:4px;
+      background:#dce9e7;
+      flex:1;
+      border-radius:5px;
+      overflow:hidden;
+    }
+
+    .progress-fill{
+      height:100%;
+      width:0;
+      background:var(--teal);
+    }
+
+    .dots{
+      text-align:center;
+      margin:8px 0 15px;
+    }
+
+    .dot{
+      display:inline-block;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#c6ddda;
+      margin:0 3px;
+    }
+
+    .dot.active{
+      background:var(--teal);
+    }
+
+    .process-cta{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .process-price{
+      color:var(--red);
+      font-size:22px;
+      font-weight:900;
+    }
+
+    .process-note{
+      text-align:center;
+      color:#657289;
+      font-size:10px;
+      margin-top:7px;
+    }
+
+    .trust-row{
+      margin-top:20px;
+      background:#f7fbfa;
+      border:1px solid #dceae8;
+      border-radius:10px;
+      padding:12px 18px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+      font-size:11px;
+    }
+
+    .trust-row strong{
+      display:block;
+      margin-bottom:2px;
+    }
+
+    /* BLUEPRINT */
+    .blueprint{
+      padding:55px 0 35px;
+    }
+
+    .blueprint-grid{
+      display:grid;
+      grid-template-columns:.9fr 1.2fr;
+      gap:65px;
+      align-items:center;
+    }
+
+    .blueprint h2{
+      font-size:42px;
+      line-height:1.05;
+      letter-spacing:-1px;
+      margin:8px 0 13px;
+    }
+
+    .blueprint p{
+      color:var(--muted);
+    }
+
+    .check-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .check{
+      background:var(--mint);
+      border:1px solid #c4ebe5;
+      border-radius:9px;
+      padding:11px 13px;
+      font-size:13px;
+    }
+
+    .check:before{
+      content:"✓";
+      color:var(--teal);
+      font-weight:900;
+      margin-right:8px;
+    }
+
+    /* ACCOMMODATION */
+    .accommodation{
+      padding:20px 0 45px;
+    }
+
+    .accommodation-box{
+      background:var(--mint);
+      border:1px solid #bce9e3;
+      border-radius:20px;
+      text-align:center;
+      padding:35px 30px;
+    }
+
+    .accommodation-box h2{
+      font-size:25px;
+      margin:12px 0 8px;
+    }
+
+    .accommodation-box p{
+      max-width:700px;
+      margin:auto;
+      color:var(--muted);
+    }
+
+    .soon{
+      display:inline-block;
+      margin-top:15px;
+      background:white;
+      border:1px solid #c8e9e5;
+      padding:7px 13px;
+      border-radius:20px;
+      color:var(--teal-dark);
+      font-weight:800;
+      font-size:11px;
+    }
+
+    /* FINAL CTA */
+    .final{
+      padding:10px 0 45px;
+    }
+
+    .final-box{
+      max-width:690px;
+      margin:auto;
+      background:var(--navy);
+      color:white;
+      border-radius:22px;
+      text-align:center;
+      padding:38px 25px;
+    }
+
+    .heart{
+      font-size:31px;
+      color:#53d4c8;
+      margin-bottom:12px;
+    }
+
+    .final-box h2{
+      font-size:30px;
+      margin-bottom:8px;
+    }
+
+    .final-box p{
+      color:#d8e0eb;
+      margin-bottom:18px;
+    }
+
+    .final-price{
+      color:#ff4c50;
+      font-size:34px;
+      font-weight:900;
+      margin-bottom:2px;
+    }
+
+    .final-note{
+      font-size:11px;
+      margin-bottom:16px;
+    }
+
+    .provider-note{
+      text-align:center;
+      max-width:690px;
+      margin:25px auto 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .provider-note strong{
+      color:var(--text);
+      display:block;
+      font-size:15px;
+      margin-bottom:5px;
+    }
+
+    footer{
+      background:var(--navy);
+      color:white;
+      padding:32px 0;
+    }
+
+    footer .brand-name{
+      color:white;
+    }
+
+    .footer-copy{
+      margin-top:14px;
+      color:#d7deea;
+      font-size:13px;
+    }
+
+    /* MOBILE */
+    @media(max-width:850px){
+      .wrap{
+        width:min(100% - 28px, 620px);
+      }
+
+      header{
+        position:relative;
+      }
+
+      .nav{
+        min-height:76px;
+      }
+
+      nav a:not(.nav-button){
+        display:none;
+      }
+
+      .nav-button{
+        font-size:11px;
+        padding:10px 13px;
+      }
+
+      .brand-icons{
+        font-size:21px;
+      }
+
+      .brand-name{
+        font-size:10px;
+      }
+
+      .hero{
+        padding:26px 0 22px;
+      }
+
+      .hero-grid{
+        grid-template-columns:1fr;
+        gap:22px;
+      }
+
+      h1{
+        font-size:38px;
+        letter-spacing:-1.5px;
+        margin-bottom:18px;
+      }
+
+      .clock-copy{
+        font-size:15px;
+      }
+
+      .hero-copy{
+        margin-left:0;
+        font-size:14px;
+      }
+
+      .hero-actions{
+        margin-left:0;
+        display:grid;
+        grid-template-columns:1fr;
+      }
+
+      .button,
+      .price{
+        width:100%;
+      }
+
+      .payment-note{
+        margin-left:0;
+        text-align:center;
+      }
+
+      .hero-photo{
+        min-height:230px;
+        border-radius:22px;
+        order:2;
+      }
+
+      .steps{
+        grid-template-columns:1fr;
+        gap:25px;
+        text-align:left;
+      }
+
+      .step{
+        display:grid;
+        grid-template-columns:65px 1fr;
+        column-gap:12px;
+      }
+
+      .step-icon{
+        grid-row:1 / span 2;
+        margin:0;
+      }
+
+      .step p{
+        margin:0;
+        max-width:none;
+      }
+
+      .choice-grid{
+        grid-template-columns:repeat(3,1fr);
+        gap:7px;
+      }
+
+      .choice{
+        min-height:115px;
+        padding:10px 6px;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        text-align:center;
+        gap:6px;
+        font-size:9px;
+      }
+
+      .choice-icon{
+        font-size:25px;
+      }
+
+      .arrow{
+        display:none;
+      }
+
+      .include-grid{
+        grid-template-columns:repeat(4,1fr);
+        row-gap:20px;
+      }
+
+      .include-item{
+        font-size:9px;
+      }
+
+      .process-section{
+        padding:30px 0;
+      }
+
+      .process-box{
+        padding:20px 12px;
+      }
+
+      .process-cards{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .process-card{
+        min-height:220px;
+      }
+
+      .trust-row{
+        grid-template-columns:1fr;
+      }
+
+      .blueprint{
+        padding:38px 0 25px;
+      }
+
+      .blueprint-grid{
+        grid-template-columns:1fr;
+        gap:25px;
+      }
+
+      .blueprint h2{
+        font-size:34px;
+      }
+
+      .check-grid{
+        grid-template-columns:1fr;
+      }
+
+      .final-box h2{
+        font-size:25px;
+      }
+    }
+
+    @media(max-width:480px){
+      .process-cards{
+        grid-template-columns:1fr;
+      }
+
+      .process-card{
+        min-height:auto;
+      }
+
+      .include-grid{
+        grid-template-columns:repeat(4,1fr);
+        gap:8px;
+      }
+
+      .include-icon{
+        font-size:22px;
+      }
+
+      .include-item{
+        font-size:8px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-<div class="container header-inner">
+  <div class="wrap nav">
+    <a href="#" class="brand">
+      <div class="brand-icons">
+        <span>▣</span>
+        <span class="brand-route">···✈···</span>
+        <span>✉</span>
+      </div>
+      <div class="brand-name">TRIPS DELIVERED</div>
+    </a>
 
-  <a class="brand" href="#top">
-
-    <svg class="brand-logo" viewBox="0 0 170 48" xmlns="http://www.w3.org/2000/svg">
-
-      <g
-        fill="none"
-        stroke="#0F766E"
-        stroke-width="3"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <rect x="4" y="14" width="33" height="25" rx="4"/>
-        <path d="M14 14V9c0-2 1.5-3.5 3.5-3.5h6c2 0 3.5 1.5 3.5 3.5v5"/>
-        <path d="M10 25h21"/>
-
-        <path d="M43 26h12" stroke-dasharray="2 4"/>
-        <path d="M82 26h13" stroke-dasharray="2 4"/>
-        <path d="M119 26h11" stroke-dasharray="2 4"/>
-
-        <rect x="132" y="13" width="34" height="27" rx="3"/>
-        <path d="M134 16l15 12 15-12"/>
-      </g>
-
-      <g fill="#0F766E" transform="translate(60 15)">
-        <path d="M16 0l4 1-4 8 12 5v3l-13-3-5 10H7l2-11-8-3V7l9 1z"/>
-      </g>
-
-    </svg>
-
-    <div class="brand-name">TRIPS DELIVERED</div>
-
-  </a>
-
-  <nav>
-    <a href="#how">How It Works</a>
-    <a href="#receive">What You Get</a>
-    <a href="#paths">Destinations</a>
-    <a href="#accommodation">Hotels & Accommodation</a>
-    <a href="#faq">FAQs</a>
-    <a href="#blueprint" class="nav-cta">Get My Blueprint</a>
-  </nav>
-
-</div>
+    <nav>
+      <a href="#how">How It Works</a>
+      <a href="#blueprint">What You Get</a>
+      <a href="#choices">Destinations</a>
+      <a href="#accommodation">Hotels &amp; Accommodation</a>
+      <a href="#faq">FAQs</a>
+      <a href="#get-started" class="nav-button">Get My Blueprint</a>
+    </nav>
+  </div>
 </header>
 
+<main>
 
-<main id="top">
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="container hero-grid">
-
-  <div class="hero-copy">
-
-    <h1>
-      Your holiday plans<br>
-      made <span>easier and quicker.</span>
-    </h1>
-
-    <div class="save-row">
-
-      <div class="clock"></div>
-
-      <div class="save-copy">
-        Save hours of research<br>
-        for about the cost of lunch.
-      </div>
-
-    </div>
-
-    <p>
-      We do the accommodation research first, then shape the rest
-      of your personalised travel blueprint around the holiday you want.
-    </p>
-
-    <div class="hero-actions">
-
-      <a href="#blueprint" class="button">
-        GET MY TRAVEL BLUEPRINT
-      </a>
-
-      <div class="price-box">
-        AUD $14.99
-      </div>
-
-      <div class="payment-note">
-        One-off payment &nbsp; · &nbsp; No subscription
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="hero-image"></div>
-
-</div>
-
-</section>
-
-
-<!-- HOW IT WORKS -->
-
-<section class="how" id="how">
-
-<div class="container">
-
-  <div class="section-small">
-    HOW IT WORKS
-  </div>
-
-  <div class="steps">
-
-    <article class="step">
-
-      <div class="step-icon-wrap">
-        <span class="step-number">1</span>
-        📝
-      </div>
-
-      <h3>Tell us about your holiday</h3>
-
-      <p>
-        Choose where you want to travel, tell us where you've already booked,
-        or ask us to help compare destinations.
-      </p>
-
-    </article>
-
-
-    <article class="step">
-
-      <div class="step-icon-wrap">
-        <span class="step-number">2</span>
-        🔍
-      </div>
-
-      <h3>We do the research</h3>
-
-      <p>
-        Accommodation comes first. We find options that match your budget,
-        travel style and priorities — plus useful ideas for the rest of your holiday.
-      </p>
-
-    </article>
-
-
-    <article class="step">
-
-      <div class="step-icon-wrap">
-        <span class="step-number">3</span>
-        ✉️
-      </div>
-
-      <h3>Your plan is delivered</h3>
-
-      <p>
-        Your personalised Travel Blueprint arrives in your email,
-        ready to use.
-      </p>
-
-    </article>
-
-  </div>
-
-</div>
-
-</section>
-
-
-<!-- CUSTOMER PATHS -->
-
-<section class="paths" id="paths">
-
-<div class="container">
-
-  <div class="paths-title">
-    WHAT WOULD YOU LIKE TO DO?
-  </div>
-
-  <div class="path-grid">
-
-    <div class="path-card">
-
-      <div class="path-left">
-        <div class="path-icon">🌍</div>
-        <strong>I WANT TO<br>TRAVEL TO...</strong>
-      </div>
-
-      <div class="path-arrow">›</div>
-
-    </div>
-
-
-    <div class="path-card">
-
-      <div class="path-left">
-        <div class="path-icon">🧳</div>
-        <strong>I HAVE BOOKED<br>MY DESTINATION</strong>
-      </div>
-
-      <div class="path-arrow">›</div>
-
-    </div>
-
-
-    <div class="path-card">
-
-      <div class="path-left">
-        <div class="path-icon">🪧</div>
-        <strong>SHOW ME<br>DESTINATION OPTIONS</strong>
-      </div>
-
-      <div class="path-arrow">›</div>
-
-    </div>
-
-  </div>
-
-</div>
-
-</section>
-
-
-<!-- BLUEPRINT INCLUDES -->
-
-<section class="includes">
-
-<div class="container">
-
-  <div class="includes-title">
-    <span>YOUR BLUEPRINT INCLUDES</span>
-  </div>
-
-  <div class="includes-grid">
-
-    <div class="include">
-      <div class="include-icon">🏨</div>
-      <strong>Accommodation options & booking links</strong>
-    </div>
-
-    <div class="include">
-      <div class="include-icon">📍</div>
-      <strong>Location & map links</strong>
-    </div>
-
-    <div class="include">
-      <div class="include-icon">🎟</div>
-      <strong>Tours & experiences</strong>
-    </div>
-
-    <div class="include">
-      <div class="include-icon">🚐</div>
-      <strong>Airport transfers</strong>
-    </div>
-
-    <div class="include">
-      <div class="include-icon">🚗</div>
-      <strong>Car hire</strong>
-    </div>
-
-    <div class="include">
-      <div class="include-icon">🍴</div>
-      <strong>Food & local ideas</strong>
-    </div>
-
-    <div class="include">
-      <div class="include-icon">ⓘ</div>
-      <strong>Useful travel information</strong>
-    </div>
-
-  </div>
-
-  <div class="promise">
-    ♡ You choose. <span>We research.</span> You book.
-  </div>
-
-</div>
-
-</section>
-
-
-<!-- FOUR CARD VISUAL -->
-
-<section class="visual">
-
-<div class="container">
-
-  <div class="visual-panel">
-
-    <div class="visual-heading">
-      <span>SEE HOW TRIPS DELIVERED WORKS</span>
-      <h2>See the whole process at a glance.</h2>
-    </div>
-
-
-    <div class="cards">
-
-      <!-- CARD 1 -->
-
-      <article class="card active">
-
-        <div class="card-head">
-          <div class="card-num">1</div>
-          <h3>TOO MUCH<br>SEARCHING?</h3>
-        </div>
-
-        <div class="card-image">
-          <div class="search-image"></div>
-          <div class="search-tag">Too many tabs</div>
-        </div>
-
-        <div class="card-caption">
-          Stop spending hours comparing travel ideas.
-        </div>
-
-      </article>
-
-
-      <!-- CARD 2 -->
-
-      <article class="card">
-
-        <div class="card-head">
-          <div class="card-num">2</div>
-          <h3>TELL US<br>YOUR TRIP</h3>
-        </div>
-
-        <div class="card-image">
-
-          <div class="form-demo">
-
-            <div class="form-row">
-              Destination <strong>Bali</strong>
-            </div>
-
-            <div class="form-row">
-              When? <strong>January</strong>
-            </div>
-
-            <div class="form-row">
-              Travelling <strong>Couple</strong>
-            </div>
-
-            <div class="tags">
-              <span>Food</span>
-              <span>Beaches</span>
-              <span>Relaxed</span>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="card-caption">
-          Answer a few quick questions about your ideal holiday.
-        </div>
-
-      </article>
-
-
-      <!-- CARD 3 -->
-
-      <article class="card">
-
-        <div class="card-head">
-          <div class="card-num">3</div>
-          <h3>WE DO<br>THE RESEARCH</h3>
-        </div>
-
-        <div class="card-image">
-
-          <div class="research-demo">
-
-            <div class="research-photo"></div>
-
-            <div class="research-list">
-              <span>📍 Seminyak</span>
-              <span>📍 Sanur</span>
-              <span>📍 Uluwatu</span>
-              <span>🌴 Sightseeing</span>
-              <span>🍜 Food</span>
-              <span>🎟 Tours</span>
-              <span>🚗 Getting around</span>
-              <span>💡 Useful tips</span>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="card-caption">
-          We research the best areas, things to do, tours, tips and more.
-        </div>
-
-      </article>
-
-
-      <!-- CARD 4 -->
-
-      <article class="card">
-
-        <div class="card-head">
-          <div class="card-num">4</div>
-          <h3>YOUR BLUEPRINT<br>ARRIVES</h3>
-        </div>
-
-        <div class="card-image">
-
-          <div class="phone-demo">
-
-            <div class="phone-logo">TRIPS DELIVERED</div>
-
-            <div class="phone-title">
-              Your Bali Travel Blueprint is ready!
-            </div>
-
-            <div class="phone-cover">
-              <strong>BALI</strong>
-              <small>Your Personalised Travel Blueprint</small>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="card-caption">
-          Get your personalised blueprint delivered straight to your email.
-        </div>
-
-      </article>
-
-    </div>
-
-
-    <!-- AUTO HIGHLIGHT -->
-
-    <div class="auto">
-
-      <button id="playPause" type="button">❚❚</button>
+  <section class="hero">
+    <div class="wrap hero-grid">
 
       <div>
+        <h1>
+          Your holiday plans<br>
+          made <span class="teal">easier and quicker.</span>
+        </h1>
 
-        <div class="track">
-          <div class="track-fill" id="trackFill"></div>
+        <div class="clock-row">
+          <div class="clock"></div>
+          <div class="clock-copy">
+            Save hours of research<br>
+            for about the cost of lunch.
+          </div>
+        </div>
+
+        <p class="hero-copy">
+          We do the accommodation research first, then shape the rest of your
+          personalised travel blueprint around the holiday you want.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button" href="#get-started">GET MY TRAVEL BLUEPRINT</a>
+          <div class="price">AUD $14.99</div>
+        </div>
+
+        <div class="payment-note">One-off payment &nbsp; · &nbsp; No subscription</div>
+      </div>
+
+      <div class="hero-photo" aria-label="Tropical beach"></div>
+
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="wrap">
+
+      <div class="section-label">How It Works</div>
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-icon">
+            <span class="number">1</span>
+            📝
+          </div>
+          <div>
+            <h3>Tell us about your holiday</h3>
+            <p>
+              Choose where you want to travel, tell us where you've already
+              booked, or ask us to help compare destinations.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon">
+            <span class="number">2</span>
+            🔍
+          </div>
+          <div>
+            <h3>We do the research</h3>
+            <p>
+              Accommodation comes first. We find options that match your budget,
+              travel style and priorities — plus useful ideas for the rest of your holiday.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon">
+            <span class="number">3</span>
+            ✉️
+          </div>
+          <div>
+            <h3>Your plan is delivered</h3>
+            <p>
+              Your personalised Travel Blueprint arrives in your email,
+              ready to use.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="choices" id="choices">
+    <div class="wrap">
+
+      <div class="choices-title">WHAT WOULD YOU LIKE TO DO?</div>
+
+      <div class="choice-grid">
+
+        <a href="#get-started" class="choice">
+          <span class="choice-icon">🌍</span>
+          <span>I WANT TO<br>TRAVEL TO...</span>
+          <span class="arrow">›</span>
+        </a>
+
+        <a href="#get-started" class="choice">
+          <span class="choice-icon">🧳</span>
+          <span>I HAVE BOOKED<br>MY DESTINATION</span>
+          <span class="arrow">›</span>
+        </a>
+
+        <a href="#get-started" class="choice">
+          <span class="choice-icon">🪧</span>
+          <span>SHOW ME<br>DESTINATION OPTIONS</span>
+          <span class="arrow">›</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="includes">
+    <div class="wrap">
+
+      <div class="divider-title">
+        <span>YOUR BLUEPRINT INCLUDES</span>
+      </div>
+
+      <div class="include-grid">
+
+        <div>
+          <div class="include-icon">🏨</div>
+          <div class="include-item">Accommodation options &amp; booking links</div>
+        </div>
+
+        <div>
+          <div class="include-icon">📍</div>
+          <div class="include-item">Location &amp; map links</div>
+        </div>
+
+        <div>
+          <div class="include-icon">🎟️</div>
+          <div class="include-item">Tours &amp; experiences</div>
+        </div>
+
+        <div>
+          <div class="include-icon">🚐</div>
+          <div class="include-item">Airport transfers</div>
+        </div>
+
+        <div>
+          <div class="include-icon">🚗</div>
+          <div class="include-item">Car hire</div>
+        </div>
+
+        <div>
+          <div class="include-icon">🍴</div>
+          <div class="include-item">Food &amp; local ideas</div>
+        </div>
+
+        <div>
+          <div class="include-icon">ⓘ</div>
+          <div class="include-item">Useful travel information</div>
+        </div>
+
+      </div>
+
+      <div class="promise">♡ You choose. <span class="teal">We research.</span> You book.</div>
+
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="wrap">
+
+      <div class="process-box">
+
+        <div class="section-label">See How Trips Delivered Works</div>
+        <h2>See the whole process at a glance.</h2>
+
+        <div class="process-cards">
+
+          <div class="process-card active">
+            <div class="card-head">
+              <span class="card-num">1</span>
+              <span>Too much<br>searching?</span>
+            </div>
+
+            <div class="card-visual">
+              <img
+                class="search-photo"
+                src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80"
+                alt="Laptop and travel research">
+              <div class="tabs">Too many tabs</div>
+            </div>
+
+            <div class="card-copy">
+              Stop spending hours comparing travel ideas.
+            </div>
+          </div>
+
+          <div class="process-card">
+            <div class="card-head">
+              <span class="card-num">2</span>
+              <span>Tell us<br>your trip</span>
+            </div>
+
+            <div class="card-visual">
+              <div class="mini-form">
+                <div class="mini-field">Destination <span>Bali</span></div>
+                <div class="mini-field">When? <span>January</span></div>
+                <div class="mini-field">Travelling <span>Couple</span></div>
+                <div class="mini-field">Food · Beaches · Relaxed</div>
+              </div>
+            </div>
+
+            <div class="card-copy">
+              Answer a few quick questions about your ideal holiday.
+            </div>
+          </div>
+
+          <div class="process-card">
+            <div class="card-head">
+              <span class="card-num">3</span>
+              <span>We do<br>the research</span>
+            </div>
+
+            <div class="card-visual">
+              <div class="research">
+                <div class="research-photo"></div>
+                <div class="research-list">
+                  📍 Seminyak<br>
+                  📍 Sanur<br>
+                  📍 Uluwatu<br>
+                  🏨 Stays<br>
+                  🍴 Food<br>
+                  🎟️ Tours<br>
+                  🚐 Getting around
+                </div>
+              </div>
+            </div>
+
+            <div class="card-copy">
+              We research the best areas, things to do, tours, tips and more.
+            </div>
+          </div>
+
+          <div class="process-card">
+            <div class="card-head">
+              <span class="card-num">4</span>
+              <span>Your blueprint<br>arrives</span>
+            </div>
+
+            <div class="card-visual">
+              <div class="email-card">
+                <div class="email-title">TRIPS DELIVERED</div>
+                <strong>Your Bali Travel Blueprint is ready!</strong>
+                <div class="email-image">
+                  Your Personalised<br>Travel Blueprint
+                </div>
+              </div>
+            </div>
+
+            <div class="card-copy">
+              Get your personalised blueprint delivered straight to your email.
+            </div>
+          </div>
+
+        </div>
+
+        <div class="progress-row">
+          <button class="pause" id="pauseButton" aria-label="Pause animation">Ⅱ</button>
+          <div class="progress">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <small>Auto play · 8 sec</small>
         </div>
 
         <div class="dots">
@@ -1608,361 +1332,180 @@ footer{
           <span class="dot"></span>
         </div>
 
-      </div>
+        <div class="process-cta">
+          <a class="button" href="#get-started">GET MY TRAVEL BLUEPRINT</a>
+          <div class="process-price">AUD $14.99</div>
+        </div>
 
-      <div class="auto-label">
-        Auto play · 8 sec
-      </div>
+        <div class="process-note">🔒 One-off payment &nbsp; · &nbsp; No subscription</div>
 
-    </div>
-
-
-    <!-- CTA -->
-
-    <div class="visual-cta">
-
-      <a href="#blueprint" class="button">
-        GET MY TRAVEL BLUEPRINT
-      </a>
-
-      <div class="visual-price">
-        AUD $14.99
-      </div>
-
-      <div class="visual-note">
-        🔒 One-off payment &nbsp; · &nbsp; No subscription
-      </div>
-
-    </div>
-
-
-    <!-- TRUST -->
-
-    <div class="trust">
-
-      <div class="trust-item">
-
-        <div class="trust-icon">♢</div>
-
-        <div>
-          <strong>Trusted & Independent</strong>
-          <small>Useful research to help you choose.</small>
+        <div class="trust-row">
+          <div>
+            <strong>◇ Trusted &amp; Independent</strong>
+            Useful research to help you choose.
+          </div>
+          <div>
+            <strong>◉ Saves You Hours</strong>
+            We do the hard work so you don't have to.
+          </div>
+          <div>
+            <strong>♡ Book With Confidence</strong>
+            Explore trusted provider options and book directly.
+          </div>
         </div>
 
       </div>
+    </div>
+  </section>
 
+  <section class="blueprint" id="blueprint">
+    <div class="wrap blueprint-grid">
 
-      <div class="trust-item">
-
-        <div class="trust-icon">◉</div>
-
-        <div>
-          <strong>Saves You Hours</strong>
-          <small>We do the hard work so you don't have to.</small>
+      <div>
+        <div class="section-label" style="text-align:left;margin-bottom:0;">
+          What You Will Receive
         </div>
 
+        <h2>Your personalised<br>Travel Blueprint.</h2>
+
+        <p>
+          Useful travel research organised around your answers and
+          delivered directly to your email.
+        </p>
       </div>
 
-
-      <div class="trust-item">
-
-        <div class="trust-icon">♡</div>
-
-        <div>
-          <strong>Book With Confidence</strong>
-          <small>Explore trusted provider options and book directly.</small>
-        </div>
-
+      <div class="check-grid">
+        <div class="check">Destination &amp; area guidance</div>
+        <div class="check">Tours, sightseeing &amp; experiences</div>
+        <div class="check">Maps &amp; useful location links</div>
+        <div class="check">Airport transfer ideas</div>
+        <div class="check">Car hire &amp; transport information</div>
+        <div class="check">Food &amp; local experience ideas</div>
+        <div class="check">Travel essentials &amp; useful FYIs</div>
+        <div class="check">Trusted provider booking links</div>
       </div>
 
     </div>
+  </section>
 
-  </div>
+  <section class="accommodation" id="accommodation">
+    <div class="wrap">
 
-</div>
+      <div class="accommodation-box">
+        <div class="section-label" style="margin-bottom:8px;">Hotels &amp; Accommodation</div>
 
-</section>
+        <div style="font-size:30px;">🏨</div>
 
+        <h2>Sit back — accommodation options are coming soon.</h2>
 
-<!-- WHAT YOU RECEIVE -->
+        <p>
+          We're preparing trusted hotel, resort, villa and accommodation options
+          with booking links from well-known travel providers, so planning your
+          stay with Trips Delivered will become even easier.
+        </p>
 
-<section class="receive" id="receive">
+        <span class="soon">Stay tuned — launching soon</span>
+      </div>
 
-<div class="container receive-grid">
-
-  <div>
-
-    <div class="receive-label">
-      WHAT YOU WILL RECEIVE
     </div>
+  </section>
 
-    <h2>
-      Your personalised Travel Blueprint.
-    </h2>
+  <section class="final" id="get-started">
+    <div class="wrap">
 
-    <p>
-      Useful travel research organised around your answers
-      and delivered directly to your email.
-    </p>
+      <div class="final-box">
+        <div class="heart">♡</div>
 
-  </div>
+        <h2>You choose. We research. You book.</h2>
 
+        <p>
+          Tell us about your holiday and let Trips Delivered organise
+          the research for you.
+        </p>
 
-  <div class="receive-list">
+        <div class="final-price">AUD $14.99</div>
+        <div class="final-note">One-off payment · No subscription</div>
 
-    <div class="receive-item">Destination & area guidance</div>
-    <div class="receive-item">Tours, sightseeing & experiences</div>
-    <div class="receive-item">Maps & useful location links</div>
-    <div class="receive-item">Airport transfer ideas</div>
-    <div class="receive-item">Car hire & transport information</div>
-    <div class="receive-item">Food & local experience ideas</div>
-    <div class="receive-item">Travel essentials & useful FYIs</div>
-    <div class="receive-item">Trusted provider booking links</div>
+        <a class="button" href="#">GET MY TRAVEL BLUEPRINT</a>
+      </div>
 
-  </div>
+      <div class="provider-note">
+        <strong>Book directly with travel providers.</strong>
+        Where booking links are provided, view current prices, availability and
+        booking details directly with the relevant provider.
+      </div>
 
-</div>
-
-</section>
-
-
-<!-- HOTELS & ACCOMMODATION -->
-
-<section class="accommodation" id="accommodation">
-
-<div class="container">
-
-  <div class="accommodation-box">
-
-    <div class="accommodation-label">
-      HOTELS & ACCOMMODATION
     </div>
-
-    <div class="accommodation-icon">
-      🏨
-    </div>
-
-    <h2>
-      Sit back — accommodation options are coming soon.
-    </h2>
-
-    <p>
-      We're preparing trusted hotel, resort, villa and accommodation options
-      with booking links from well-known travel providers, so planning your
-      stay with Trips Delivered will become even easier.
-    </p>
-
-    <div class="accommodation-soon">
-      Stay tuned — launching soon
-    </div>
-
-  </div>
-
-</div>
-
-</section>
-
-
-<!-- FINAL CTA -->
-
-<section class="final" id="blueprint">
-
-<div class="container">
-
-  <div class="final-box">
-
-    <div class="final-heart">♡</div>
-
-    <h2>
-      You choose. We research. You book.
-    </h2>
-
-    <p>
-      Tell us about your holiday and let Trips Delivered organise the research for you.
-    </p>
-
-    <div class="final-price">
-      AUD $14.99
-    </div>
-
-    <div class="final-note">
-      One-off payment · No subscription
-    </div>
-
-    <a href="#" class="button">
-      GET MY TRAVEL BLUEPRINT
-    </a>
-
-  </div>
-
-</div>
-
-</section>
-
-
-<!-- PROVIDERS -->
-
-<section class="providers">
-
-<div class="container">
-
-  <strong>
-    Book directly with travel providers.
-  </strong>
-
-  <p>
-    Where booking links are provided, view current prices,
-    availability and booking details directly with the relevant provider.
-  </p>
-
-</div>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer id="faq">
-
-<div class="container">
-
-  <div class="footer-brand">
-
-    <svg class="brand-logo" viewBox="0 0 170 48" xmlns="http://www.w3.org/2000/svg">
-
-      <g
-        fill="none"
-        stroke="#5EEAD4"
-        stroke-width="3"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <rect x="4" y="14" width="33" height="25" rx="4"/>
-        <path d="M14 14V9c0-2 1.5-3.5 3.5-3.5h6c2 0 3.5 1.5 3.5 3.5v5"/>
-        <path d="M10 25h21"/>
-
-        <path d="M43 26h12" stroke-dasharray="2 4"/>
-        <path d="M82 26h13" stroke-dasharray="2 4"/>
-        <path d="M119 26h11" stroke-dasharray="2 4"/>
-
-        <rect x="132" y="13" width="34" height="27" rx="3"/>
-        <path d="M134 16l15 12 15-12"/>
-      </g>
-
-      <g fill="#5EEAD4" transform="translate(60 15)">
-        <path d="M16 0l4 1-4 8 12 5v3l-13-3-5 10H7l2-11-8-3V7l9 1z"/>
-      </g>
-
-    </svg>
-
-    <div class="brand-name">
-      TRIPS DELIVERED
-    </div>
-
-  </div>
-
-  <div class="footer-tag">
-    Your holiday plans made easier and quicker.
-  </div>
-
-  <div class="footer-small">
-    Trips Delivered provides personalised travel research, planning information
-    and recommendations. Bookings are completed directly with independent
-    third-party travel providers.
-  </div>
-
-  <div class="footer-small">
-    Some links may be affiliate or partner links. Trips Delivered may receive
-    a commission from qualifying bookings at no additional cost to you.
-  </div>
-
-  <div class="footer-small">
-    © 2026 Trips Delivered. All rights reserved.
-  </div>
-
-</div>
-
-</footer>
+  </section>
 
 </main>
 
+<footer id="faq">
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-icons">
+        <span>▣</span>
+        <span class="brand-route">···✈···</span>
+        <span>✉</span>
+      </div>
+      <div class="brand-name">TRIPS DELIVERED</div>
+    </div>
+
+    <div class="footer-copy">
+      Your holiday plans made easier and quicker.
+    </div>
+  </div>
+</footer>
 
 <script>
-(function(){
+  const cards = document.querySelectorAll(".process-card");
+  const dots = document.querySelectorAll(".dot");
+  const pauseButton = document.getElementById("pauseButton");
+  const progressFill = document.getElementById("progressFill");
 
-  const cards = Array.from(document.querySelectorAll(".card"));
-  const dots = Array.from(document.querySelectorAll(".dot"));
-  const playPause = document.getElementById("playPause");
-  const trackFill = document.getElementById("trackFill");
-
+  let activeCard = 0;
   let playing = true;
-  let current = 0;
-  let startTime = performance.now();
+  let elapsed = 0;
+  const duration = 8000;
+  const tick = 100;
 
-  const totalTime = 8000;
-  const perCard = totalTime / cards.length;
-
-  function activate(index){
-
-    current = index;
-
-    cards.forEach((card,i)=>{
+  function showCard(index){
+    cards.forEach((card, i) => {
       card.classList.toggle("active", i === index);
     });
 
-    dots.forEach((dot,i)=>{
+    dots.forEach((dot, i) => {
       dot.classList.toggle("active", i === index);
     });
-
   }
 
-  cards.forEach((card,index)=>{
+  setInterval(() => {
+    if(!playing) return;
 
-    card.addEventListener("click",()=>{
+    elapsed += tick;
+    progressFill.style.width = ((elapsed / duration) * 100) + "%";
 
-      activate(index);
-      startTime = performance.now() - (index * perCard);
+    if(elapsed >= duration){
+      elapsed = 0;
+      activeCard = (activeCard + 1) % cards.length;
+      showCard(activeCard);
+      progressFill.style.width = "0%";
+    }
+  }, tick);
 
-    });
-
-  });
-
-  playPause.addEventListener("click",()=>{
-
+  pauseButton.addEventListener("click", () => {
     playing = !playing;
-
-    playPause.textContent = playing ? "❚❚" : "▶";
-
-    if(playing){
-      startTime = performance.now() - (current * perCard);
-    }
-
+    pauseButton.textContent = playing ? "Ⅱ" : "▶";
   });
 
-  function animate(now){
-
-    if(playing){
-
-      const elapsed = (now - startTime) % totalTime;
-      const index = Math.floor(elapsed / perCard);
-
-      if(index !== current){
-        activate(index);
-      }
-
-      trackFill.style.width =
-        ((elapsed / totalTime) * 100) + "%";
-
-    }
-
-    requestAnimationFrame(animate);
-
-  }
-
-  activate(0);
-  requestAnimationFrame(animate);
-
-})();
+  cards.forEach((card, index) => {
+    card.addEventListener("click", () => {
+      activeCard = index;
+      elapsed = 0;
+      showCard(activeCard);
+      progressFill.style.width = "0%";
+    });
+  });
 </script>
 
 </body>
